@@ -4,6 +4,7 @@ import WelcomeScreen from "./components/WelcomeScreen";
 import ContactList from "./components/ContactList";
 import ContactDetails from "./components/ContactDetails";
 import AddNewContactForm from "./components/AddNewContactForm";
+import CalculatorInput from "./components/CalculatorInput";
 
 export default function App() {
   return (
@@ -17,6 +18,9 @@ export default function App() {
       <ContactDetails></ContactDetails>
 
       <AddNewContactForm></AddNewContactForm>
+
+      <CalculatorInput></CalculatorInput>
+
       <StatusBar style="auto" />
     </View>
   );
