@@ -5,6 +5,7 @@ import ContactList from "./components/ContactList";
 import ContactDetails from "./components/ContactDetails";
 import AddNewContactForm from "./components/AddNewContactForm";
 import CalculatorInput from "./components/CalculatorInput";
+import TravelChecklist from "./components/TravelChecklist";
 
 export default function App() {
   return (
@@ -20,6 +21,8 @@ export default function App() {
       <AddNewContactForm></AddNewContactForm>
 
       <CalculatorInput></CalculatorInput>
+
+      <TravelChecklist></TravelChecklist>
 
       <StatusBar style="auto" />
     </View>
