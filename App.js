@@ -1,11 +1,22 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
+import WelcomeScreen from "./components/WelcomeScreen";
+import ContactList from "./components/ContactList";
+import ContactDetails from "./components/ContactDetails";
+import AddNewContactForm from "./components/AddNewContactForm";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <h1> here is the title of the app </h1>
-      <Text>Open up App.js to start working on your app!</Text>
+      <h1>T1D Organizer</h1>
+
+      <WelcomeScreen></WelcomeScreen>
+
+      <ContactList> </ContactList>
+
+      <ContactDetails></ContactDetails>
+
+      <AddNewContactForm></AddNewContactForm>
       <StatusBar style="auto" />
     </View>
   );
