@@ -1,4 +1,5 @@
 import react from "React";
+import { View, ScrollView } from "react-native";
 
 //The calculator input form
 //Should take inputs like destination, duration of trip, insulin use per day, devices used
@@ -7,7 +8,7 @@ import react from "React";
 
 function CalculatorInput() {
   return (
-    <div>
+    <ScrollView>
       <h1> 5. Calculate </h1>
       <button>GO BACK</button>
       <form>
@@ -63,7 +64,7 @@ function CalculatorInput() {
         </ul>
         <button>Generate Checklist</button>
       </form>
-    </div>
+    </ScrollView>
   );
 }
 

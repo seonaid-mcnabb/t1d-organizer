@@ -1,4 +1,5 @@
 import react from "React";
+import { ScrollView } from "react-native";
 
 //The travel checklist should
 //Have a button to go back to input form
@@ -9,7 +10,7 @@ import react from "React";
 
 function TravelChecklist() {
   return (
-    <div>
+    <ScrollView>
       <h1>Travel Checklist</h1>
       <button>GO BACK</button>
       <ul>
@@ -54,7 +55,7 @@ function TravelChecklist() {
         </li>
       </ul>
       <button>I'm ready to go!</button>
-    </div>
+    </ScrollView>
   );
 }
 

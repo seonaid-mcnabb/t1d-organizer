@@ -1,4 +1,5 @@
 import react from "React";
+import { ScrollView } from "react-native";
 
 //THE ADD NEW CONTACT FORM SHOULD:
 //Accept and record details of a new contact
@@ -6,7 +7,7 @@ import react from "React";
 
 function AddNewContactForm() {
   return (
-    <div>
+    <ScrollView>
       <h1>4. Add New Contact</h1>
       <button>GO BACK</button>
       <form>
@@ -42,7 +43,7 @@ function AddNewContactForm() {
           <button type="submit">ADD</button>
         </ul>
       </form>
-    </div>
+    </ScrollView>
   );
 }
 
