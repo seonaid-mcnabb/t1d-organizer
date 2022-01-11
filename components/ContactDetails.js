@@ -1,5 +1,5 @@
 import react from "React";
-import { View, ScrollView } from "react-native";
+import { View, ScrollView, Button } from "react-native";
 
 //THE CONTACT DETAILS VIEW
 //Should display the selected contact's name at the top
@@ -9,7 +9,7 @@ function ContactDetails() {
   return (
     <ScrollView>
       <h1>3. Contact Name</h1>
-      <button>GO BACK</button>
+      <Button title="GO BACK" />
       <ul>
         <li>
           Phone number: <button>CALL</button>
@@ -20,7 +20,7 @@ function ContactDetails() {
         <li>Address:</li>
         <li>Notes:</li>
       </ul>
-      <button>EDIT</button>
+      <Button title="EDIT" />
     </ScrollView>
   );
 }

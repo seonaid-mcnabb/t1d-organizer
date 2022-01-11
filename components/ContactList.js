@@ -1,5 +1,5 @@
 import react from "React";
-import { ScrollView } from "react-native";
+import { ScrollView, Button } from "react-native";
 
 //The contact list should:
 //Map through contacts database and display names in alphabetic order
@@ -9,14 +9,14 @@ function ContactList() {
   return (
     <ScrollView>
       <h1>2. Contacts List</h1>
-      <button>GO BACK</button>
+      <Button title="GO BACK" />
       <ul>
         {" "}
         <li>
-          John Smith <button>SEE MORE</button>
+          John Smith <button name="See more"> SEE MORE </button>
         </li>
       </ul>
-      <button>ADD NEW </button>
+      <Button title="ADD NEW" />
     </ScrollView>
   );
 }

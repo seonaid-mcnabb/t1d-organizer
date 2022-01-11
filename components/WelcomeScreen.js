@@ -1,5 +1,5 @@
 import react from "React";
-import { View } from "react-native";
+import { View, Button } from "react-native";
 
 //The welcome screen should:
 //Display three icons & three buttons: contacts, calendar, calculator
@@ -9,9 +9,9 @@ function WelcomeScreen() {
     <View>
       <h1>1. Welcome </h1>
 
-      <button name="Contacts">CONTACTS</button>
-      <button name="Calendar">CALENDAR</button>
-      <button name="Calculator">CALCULATOR</button>
+      <Button title="CONTACTS"></Button>
+      <Button title="CALENDAR"></Button>
+      <Button title="CALCULATOR"></Button>
     </View>
   );
 }
