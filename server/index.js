@@ -1,10 +1,12 @@
 const express = require("express");
 const app = express();
 const port = 5000;
+const db = require("./model/helper");
 
 app.get("/", (req, res) => {
-    //You can call your database here :) 
-  res.send("Hello world!");
+  db("select * from example;")
+    .then((results) => res.send(results.data))
+    .catch((err) => res.status(500).send(err));
 });
 
 app.listen(port, () => {
