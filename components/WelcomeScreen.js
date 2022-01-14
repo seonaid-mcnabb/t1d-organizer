@@ -8,7 +8,6 @@ function WelcomeScreen() {
   return (
     <View>
       <h1>1. Welcome </h1>
-
       <Button title="CONTACTS"></Button>
       <Button title="CALENDAR"></Button>
       <Button title="CALCULATOR"></Button>
