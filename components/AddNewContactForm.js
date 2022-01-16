@@ -32,9 +32,9 @@ function AddNewContactForm() {
           <li>
             <input name="email"></input>
           </li>
-          Office Address:
+          Office:
           <li>
-            <input name="address"></input>
+            <input name="office"></input>
           </li>
           Notes:
           <li>

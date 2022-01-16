@@ -11,13 +11,14 @@ function ContactDetails() {
       <h1>3. Contact Name</h1>
       <Button title="GO BACK" />
       <ul>
+        <li>Specialty:</li>
         <li>
           Phone number: <button>CALL</button>
         </li>
         <li>
           E-mail: <button>SEND A MESSAGE</button>
         </li>
-        <li>Address:</li>
+        <li>Office:</li>
         <li>Notes:</li>
       </ul>
       <Button title="EDIT" />

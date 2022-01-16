@@ -4,7 +4,7 @@ const port = 5000;
 const db = require("./model/helper");
 
 app.get("/", (req, res) => {
-  db("select * from example;")
+  db("select * from contacts;")
     .then((results) => res.send(results.data))
     .catch((err) => res.status(500).send(err));
 });

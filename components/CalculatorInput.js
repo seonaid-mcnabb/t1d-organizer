@@ -20,17 +20,14 @@ function CalculatorInput() {
             <option value="international">international</option>
           </select>
         </li>
-
         <li>
           <label for="Duration">Duration:</label>
-          <input name="duration"></input> days
         </li>
-
+        <input name="duration"></input> days
         <li>
           <label for="InsulinUse">Average insulin use:</label>
-          <input name="insulin-use"></input> units/day
         </li>
-
+        <input name="insulin-use"></input> units/day
         <label for="devices">
           <h2>Devices:</h2>
         </label>
