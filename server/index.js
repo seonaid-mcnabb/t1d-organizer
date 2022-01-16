@@ -13,23 +13,11 @@ app.use(
 );
 //And it works!
 
+//--> CONTACT DATABASE ROUTES ARE HERE <--//
+
 //This gets all of the contacts from the database
 app.get("/contacts", (req, res) => {
   db("select * from contacts;")
-    .then((results) => res.send(results.data))
-    .catch((err) => res.status(500).send(err));
-});
-
-//This gets all of the appointments from the database
-app.get("/appointments", (req, res) => {
-  db("select * from appointments;")
-    .then((results) => res.send(results.data))
-    .catch((err) => res.status(500).send(err));
-});
-
-//This gets all of the materials/prescriptions from the database
-app.get("/materials", (req, res) => {
-  db("select * from materials;")
     .then((results) => res.send(results.data))
     .catch((err) => res.status(500).send(err));
 });
@@ -45,6 +33,29 @@ app.post("/addcontact", (req, res) => {
           res.send(results.data);
         })
     )
+    .catch((err) => res.status(500).send(err));
+});
+
+//This deletes a contact by id (given in URL param)
+app.delete("/contacts/:id", (req, res) => {
+  db(`DELETE FROM contacts WHERE id=${req.params.id}`)
+    .then((result) => db("SELECT * FROM contacts;"))
+    .then((results) => {
+      res.send(results.data); //contact list is sent back as a response
+    });
+});
+
+//This gets all of the appointments from the database
+app.get("/appointments", (req, res) => {
+  db("select * from appointments;")
+    .then((results) => res.send(results.data))
+    .catch((err) => res.status(500).send(err));
+});
+
+//This gets all of the materials/prescriptions from the database
+app.get("/materials", (req, res) => {
+  db("select * from materials;")
+    .then((results) => res.send(results.data))
     .catch((err) => res.status(500).send(err));
 });
 
