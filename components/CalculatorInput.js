@@ -9,7 +9,7 @@ import { View, ScrollView, Button } from "react-native";
 function CalculatorInput() {
   return (
     <ScrollView>
-      <h1> 5. Calculate </h1>
+      <h1> Calculate </h1>
       <Button title="GO BACK" />
 
       <ul>

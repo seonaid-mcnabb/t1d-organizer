@@ -9,6 +9,7 @@ import { NavigationContainer } from "@react-navigation/native";
 */
 
 import * as React from "react";
+import { useState, useEffect } from "react";
 import { View, Text, Button } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -42,6 +43,33 @@ function WelcomeScreen({ navigation }) {
 const Stack = createNativeStackNavigator();
 
 function App() {
+  const serverURL = "ws://192.168.1.34/5000/websocket";
+
+  const [contacts, setContacts] = useState([]);
+
+  useEffect(() => {
+    fetch(`${serverURL}/`)
+      .then((res) => {
+        //
+        if (res.ok) {
+          //if the response is received correctly
+          console.log(res);
+          return res.json(); //return the response as a javascript object (this is what .json() does)
+        } else {
+          throw new Error("Not 2xx response");
+        }
+      })
+      .then((json) => {
+        // upon success, update tasks
+        setContacts(json);
+        console.log(json);
+      })
+      .catch((error) => {
+        console.log(error);
+        // upon failure, show error message
+      });
+  }, []);
+
   return (
     <NavigationContainer>
       <Stack.Navigator>

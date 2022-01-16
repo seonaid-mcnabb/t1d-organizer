@@ -14,6 +14,9 @@ app.use(
 //And it works!
 
 //--> CONTACT DATABASE ROUTES ARE HERE <--//
+app.get("/", (req, res) => {
+  res.send("Welcome to the API");
+});
 
 //This gets all of the contacts from the database
 app.get("/contacts", (req, res) => {
