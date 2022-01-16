@@ -13,6 +13,12 @@ app.use(
 );
 //And it works!
 
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+});
+
 //--> CONTACT DATABASE ROUTES ARE HERE <--//
 app.get("/", (req, res) => {
   res.send("Welcome to the API");

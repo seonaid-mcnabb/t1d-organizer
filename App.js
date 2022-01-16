@@ -48,7 +48,7 @@ function App() {
   const [contacts, setContacts] = useState([]);
 
   useEffect(() => {
-    fetch(`${serverURL}/`)
+    fetch("http://localhost:5000/contacts")
       .then((res) => {
         //
         if (res.ok) {
