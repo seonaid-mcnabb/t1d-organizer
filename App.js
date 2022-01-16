@@ -43,8 +43,6 @@ function WelcomeScreen({ navigation }) {
 const Stack = createNativeStackNavigator();
 
 function App() {
-  const serverURL = "ws://192.168.1.34/5000/websocket";
-
   const [contacts, setContacts] = useState([]);
 
   useEffect(() => {
