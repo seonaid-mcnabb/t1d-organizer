@@ -1,4 +1,4 @@
-import react from "React";
+import React from "React";
 import { ScrollView, View, Button } from "react-native";
 
 //The travel checklist should

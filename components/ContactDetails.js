@@ -1,4 +1,4 @@
-import react from "React";
+import React from "React";
 import { View, ScrollView, Button } from "react-native";
 
 //THE CONTACT DETAILS VIEW

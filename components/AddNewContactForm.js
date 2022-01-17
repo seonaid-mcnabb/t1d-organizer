@@ -1,4 +1,4 @@
-import react from "React";
+import React from "React";
 import { ScrollView, Button, Text } from "react-native";
 
 //THE ADD NEW CONTACT FORM SHOULD:
