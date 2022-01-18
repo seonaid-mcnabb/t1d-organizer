@@ -74,7 +74,7 @@ function App() {
 
   return (
     <NavigationContainer>
-      <Context1.Provider value={{ ...contacts }}>
+      <Context1.Provider value={contacts}>
         <Stack.Navigator>
           <Stack.Screen name="Home" component={WelcomeScreen} />
           <Stack.Screen name="Contacts" component={ContactList} />
