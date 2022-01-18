@@ -6,7 +6,7 @@ import { View, ScrollView, Button } from "react-native";
 //Have a button to return to home screen
 //Have a button to generate checklist
 
-function CalculatorInput() {
+function CalculatorInput({ navigation }) {
   return (
     <ScrollView>
       <h1> Calculate </h1>
@@ -59,7 +59,10 @@ function CalculatorInput() {
           <label for="Glucometer">Glucometer</label>
         </li>
       </ul>
-      <Button title="Generate Checklist" />
+      <Button
+        title="Generate Checklist"
+        onPress={() => navigation.navigate("Travel Checklist")}
+      />
     </ScrollView>
   );
 }

@@ -5,7 +5,7 @@ import { ScrollView, Button, Text } from "react-native";
 //Accept and record details of a new contact
 //Add the contact and details to the contacts database upon submit
 
-function AddNewContactForm() {
+function AddNewContactForm({ navigation }) {
   return (
     <ScrollView>
       <h1> 4. Add New Contact</h1>
