@@ -1,48 +1,99 @@
-import React from "React";
-import { ScrollView, Button, Text } from "react-native";
+import { React, useState } from "react";
+import { ScrollView, Button, Text, TextInput, View } from "react-native";
 
 //THE ADD NEW CONTACT FORM SHOULD:
 //Accept and record details of a new contact
 //Add the contact and details to the contacts database upon submit
 
 function AddNewContactForm({ navigation }) {
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [specialty, setSpecialty] = useState("");
+  const [phonenumber, setPhonenumber] = useState("");
+  const [email, setEmail] = useState("");
+  const [office, setOffice] = useState("");
+  const [notes, setNotes] = useState("");
+
+  //INSTRUCTIONS TO YOURSELF
+  // put in on each input onChange={handleChange}
+
+  //on the button add onPress={handleAdd}
+
+  /*
+app.post("/addcontact", (req, res) => {
+  db(
+    `INSERT INTO contacts (firstname, lastname, specialty, phonenumber, email, officename, notes) VALUES ("${req.body.firstname}", "${req.body.lastname}", "${req.body.specialty}","${req.body.phonenumber}","${req.body.email}", "${req.body.officename}","${req.body.notes}");`
+  )
+    .then((result) =>
+      db("SELECT * FROM contacts;") //this is the MySql query
+        .then((results) => {
+          res.send(results.data);
+        })
+    )
+    .catch((err) => res.status(500).send(err));
+});
+
+*/
+
+  /*
+    fetch("http://localhost:5000/addcontact", {
+      firstname: {firstname},
+        lastname: {lastname},
+        specialty: {specialty},
+        phonenumber: {phonenumber},
+        email: {email},
+        officename: {office},
+        notes: {notes}
+*/
+
+  function handleSubmit() {
+    fetch("http://localhost:5000/addcontact", {
+      method: "post",
+      mode: "no-cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        firstname: { firstname },
+        lastname: { lastname },
+        specialty: { specialty },
+        phonenumber: { phonenumber },
+        email: { email },
+        officename: { office },
+        notes: { notes },
+      }), //Very nice!!
+    });
+  }
+
   return (
     <ScrollView>
-      <h1> 4. Add New Contact</h1>
-      <Button title="GO BACK"></Button>
-      <form>
-        <ul>
-          First Name:
-          <li>
-            <input name="firstname"></input>
-          </li>
-          Last Name:
-          <li>
-            <input name="lastname"></input>
-          </li>
-          Specialty:
-          <li>
-            <input name="specialty"></input>
-          </li>
-          Phone number:
-          <li>
-            <input name="phonenumber"></input>
-          </li>
-          E-mail:
-          <li>
-            <input name="email"></input>
-          </li>
-          Office:
-          <li>
-            <input name="office"></input>
-          </li>
-          Notes:
-          <li>
-            <textarea name="notes"></textarea>
-          </li>
-          <Button title="ADD"></Button>
-        </ul>
-      </form>
+      <TextInput
+        placeholder="First Name"
+        onChangeText={(text) => setFirstname(text)}
+      ></TextInput>
+      <TextInput
+        placeholder="Last Name"
+        onChangeText={(text) => setLastname(text)}
+      ></TextInput>
+      <TextInput
+        placeholder="Specialty"
+        onChangeText={(text) => setSpecialty(text)}
+      ></TextInput>
+      <TextInput
+        placeholder="Phone Number"
+        onChangeText={(text) => setPhonenumber(text)}
+      ></TextInput>
+      <TextInput
+        placeholder="Email"
+        onChangeText={(text) => setEmail(text)}
+      ></TextInput>
+      <TextInput
+        placeholder="Office Location"
+        onChangeText={(text) => setOffice(text)}
+      ></TextInput>
+      <TextInput
+        placeholder="Notes"
+        onChangeText={(text) => setNotes(text)}
+      ></TextInput>
+      <Button title="ADD" onPress={handleSubmit}></Button>
     </ScrollView>
   );
 }
