@@ -2,6 +2,9 @@ const express = require("express");
 const app = express();
 const port = 5000;
 const db = require("./model/helper");
+var cors = require("cors");
+
+app.use(cors());
 
 //Added in these next lines to try to solve undefined object issue I was having with post method after running npm install --save body-parser
 const bodyParser = require("body-parser");
@@ -34,6 +37,11 @@ app.get("/contacts", (req, res) => {
 
 //This adds a new contact to the list
 app.post("/addcontact", (req, res) => {
+  console.log("***", req.body);
+  console.log(
+    "****",
+    `INSERT INTO contacts (firstname, lastname, specialty, phonenumber, email, officename, notes) VALUES ("${req.body.firstname}", "${req.body.lastname}", "${req.body.specialty}","${req.body.phonenumber}","${req.body.email}", "${req.body.officename}","${req.body.notes}");`
+  );
   db(
     `INSERT INTO contacts (firstname, lastname, specialty, phonenumber, email, officename, notes) VALUES ("${req.body.firstname}", "${req.body.lastname}", "${req.body.specialty}","${req.body.phonenumber}","${req.body.email}", "${req.body.officename}","${req.body.notes}");`
   )
