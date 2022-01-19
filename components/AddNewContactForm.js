@@ -26,10 +26,8 @@ function AddNewContactForm({ navigation }) {
 */
 
   const handleSubmit = () => {
-    console.log(firstname);
     fetch("http://localhost:5000/addcontact", {
       method: "POST",
-      mode: "no-cors",
       headers: {
         "Content-Type": "application/json",
       },
@@ -43,8 +41,8 @@ function AddNewContactForm({ navigation }) {
         notes: notes,
       }),
     })
-      .then((res) => console.log(res))
-      .then(console.log(lastname))
+      .then((res) => res.json()) //First transform the JSON to a Javascript object
+      .then((json) => console.log(json)) // Then print the JSON
       .catch((error) => {
         console.log(error);
       });
