@@ -14,27 +14,6 @@ function AddNewContactForm({ navigation }) {
   const [office, setOffice] = useState("");
   const [notes, setNotes] = useState("");
 
-  //INSTRUCTIONS TO YOURSELF
-  // put in on each input onChange={handleChange}
-
-  //on the button add onPress={handleAdd}
-
-  /*
-app.post("/addcontact", (req, res) => {
-  db(
-    `INSERT INTO contacts (firstname, lastname, specialty, phonenumber, email, officename, notes) VALUES ("${req.body.firstname}", "${req.body.lastname}", "${req.body.specialty}","${req.body.phonenumber}","${req.body.email}", "${req.body.officename}","${req.body.notes}");`
-  )
-    .then((result) =>
-      db("SELECT * FROM contacts;") //this is the MySql query
-        .then((results) => {
-          res.send(results.data);
-        })
-    )
-    .catch((err) => res.status(500).send(err));
-});
-
-*/
-
   /*
     fetch("http://localhost:5000/addcontact", {
       firstname: {firstname},
@@ -46,22 +25,30 @@ app.post("/addcontact", (req, res) => {
         notes: {notes}
 */
 
-  function handleSubmit() {
+  const handleSubmit = () => {
+    console.log(firstname);
     fetch("http://localhost:5000/addcontact", {
-      method: "post",
+      method: "POST",
       mode: "no-cors",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
-        firstname: { firstname },
-        lastname: { lastname },
-        specialty: { specialty },
-        phonenumber: { phonenumber },
-        email: { email },
-        officename: { office },
-        notes: { notes },
-      }), //Very nice!!
-    });
-  }
+        firstname: firstname,
+        lastname: lastname,
+        specialty: specialty,
+        phonenumber: phonenumber,
+        email: email,
+        officename: office,
+        notes: notes,
+      }),
+    })
+      .then((res) => console.log(res))
+      .then(console.log(lastname))
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <ScrollView>
