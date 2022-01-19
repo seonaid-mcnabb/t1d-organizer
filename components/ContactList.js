@@ -20,7 +20,9 @@ function ContactList({ navigation }) {
             {item.firstname} {item.lastname}{" "}
             <Button
               title="details"
-              onPress={() => navigation.navigate("Contact Details")}
+              onPress={() =>
+                navigation.navigate("Contact Details", { id: item.id })
+              }
             />{" "}
           </Text>
         )}

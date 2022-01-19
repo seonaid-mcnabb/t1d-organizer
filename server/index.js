@@ -46,6 +46,14 @@ app.post("/addcontact", (req, res) => {
     .catch((err) => res.status(500).send(err));
 });
 
+//This gets a contact with a given id
+///MYSQL QUERY select * from contacts where id=("1");
+app.get("/contacts/:id", (req, res) => {
+  db(`select * from contacts where id=("${req.params.id}");`)
+    .then((results) => res.send(results.data))
+    .catch((err) => res.status(500).send(err));
+});
+
 //This deletes a contact by id (given in URL param)
 app.delete("/contacts/:id", (req, res) => {
   db(`DELETE FROM contacts WHERE id=${req.params.id}`)
