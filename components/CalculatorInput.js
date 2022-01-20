@@ -8,14 +8,11 @@ import { Header } from "react-native-elements";
 //Have a button to return to home screen
 //Have a button to generate checklist
 
-//NOTE TO SELF_ make checkkboxes for destination
-//Notes to self: make checkbox inputs for destination & devices
-
 function CalculatorInput({ navigation }) {
-  const [localDestination, setLocalDestination] = useState(false);
   const [abroad, setAbroad] = useState(false);
-  const [duration, setDuration] = useState([]);
-  const [insulinUse, setInsulinUse] = useState([]);
+  const [localDestination, setLocalDestination] = useState(false);
+  const [duration, setDuration] = useState("");
+  const [insulinUse, setInsulinUse] = useState("");
   const [insulinPump, setInsulinPump] = useState(false);
   const [glucometer, setGlucometer] = useState(false);
   const [sensor, setSensor] = useState(false);
@@ -36,6 +33,7 @@ function CalculatorInput({ navigation }) {
           color: "black",
           textDecorationLine: "none",
         }}
+        onPress={() => (abroad === false ? setAbroad(true) : setAbroad(false))}
       />
 
       <BouncyCheckbox
@@ -49,6 +47,11 @@ function CalculatorInput({ navigation }) {
           color: "black",
           textDecorationLine: "none",
         }}
+        onPress={() =>
+          localDestination === false
+            ? setLocalDestination(true)
+            : setLocalDestination(false)
+        }
       />
 
       <Text> Insulin use per day: </Text>
@@ -76,6 +79,9 @@ function CalculatorInput({ navigation }) {
           color: "black",
           textDecorationLine: "none",
         }}
+        onPress={() =>
+          insulinPump === false ? setInsulinPump(true) : setInsulinPump(false)
+        }
       />
 
       <BouncyCheckbox
@@ -89,6 +95,9 @@ function CalculatorInput({ navigation }) {
           color: "black",
           textDecorationLine: "none",
         }}
+        onPress={() =>
+          glucometer === false ? setGlucometer(true) : setGlucometer(false)
+        }
       />
 
       <BouncyCheckbox
@@ -102,11 +111,14 @@ function CalculatorInput({ navigation }) {
           color: "black",
           textDecorationLine: "none",
         }}
+        onPress={() => (sensor === false ? setSensor(true) : setSensor(false))}
       />
 
       <Button
         title="Generate Checklist"
-        onPress={() => navigation.navigate("Travel Checklist")}
+        onPress={() =>
+          navigation.navigate("Travel Checklist", { abroad: abroad })
+        }
       />
     </ScrollView>
   );

@@ -9,9 +9,16 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 //the "ready to go" button should only be clickable when all items have been checked off
 //once clicked, a complete list of the items packed should be sent to the user
 
-function TravelChecklist() {
+function TravelChecklist({ route }) {
+  const { sensor, abroad } = route.params;
   return (
     <View>
+      {abroad === false ? (
+        <Text> You're staying home!</Text>
+      ) : (
+        <Text> You're leaving!</Text>
+      )}
+      {console.log(abroad)}
       <Text>YOUR EMERGENCY TRAVEL BAG</Text>
       <BouncyCheckbox
         size={15}
