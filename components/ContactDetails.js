@@ -31,6 +31,27 @@ function ContactDetails({ route, navigation }) {
       });
   }, []);
 
+  const handleDeleteContact = () => {
+    fetch(`http://localhost:5000/contacts/${id}`, {
+      method: "delete",
+    })
+      .then((res) => {
+        console.log(res);
+        if (res.ok) {
+          return res.json(); //return the response as a javascript object (this is what .json() does)
+        } else {
+          throw new Error("Not 2xx response");
+        }
+      })
+      .then((json) => {
+        console.log(json);
+      })
+      .catch((error) => {
+        console.log(error);
+        // upon failure, show error message
+      });
+  };
+
   return (
     <View>
       <FlatList
@@ -46,6 +67,7 @@ function ContactDetails({ route, navigation }) {
       />
 
       <Button title="EDIT" />
+      <Button title="DELETE" onPress={handleDeleteContact} />
     </View>
   );
 }
