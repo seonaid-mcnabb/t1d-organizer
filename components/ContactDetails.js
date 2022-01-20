@@ -45,6 +45,7 @@ function ContactDetails({ route, navigation }) {
       })
       .then((json) => {
         console.log(json);
+        navigation.navigate("Contacts");
       })
       .catch((error) => {
         console.log(error);
