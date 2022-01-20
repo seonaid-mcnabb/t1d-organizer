@@ -117,7 +117,15 @@ function CalculatorInput({ navigation }) {
       <Button
         title="Generate Checklist"
         onPress={() =>
-          navigation.navigate("Travel Checklist", { abroad: abroad })
+          navigation.navigate("Travel Checklist", {
+            abroad: abroad,
+            localDestination: localDestination,
+            duration: duration,
+            insulinUse: insulinUse,
+            insulinPump: insulinPump,
+            glucometer: glucometer,
+            sensor: sensor,
+          })
         }
       />
     </ScrollView>

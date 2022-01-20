@@ -10,15 +10,24 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 //once clicked, a complete list of the items packed should be sent to the user
 
 function TravelChecklist({ route }) {
-  const { sensor, abroad } = route.params;
+  const {
+    abroad,
+    localDestination,
+    duration,
+    insulinUse,
+    insulinPump,
+    glucometer,
+    sensor,
+  } = route.params;
   return (
     <View>
-      {abroad === false ? (
-        <Text> You're staying home!</Text>
-      ) : (
-        <Text> You're leaving!</Text>
-      )}
       {console.log(abroad)}
+      {console.log(localDestination)}
+      {console.log(duration)}
+      {console.log(insulinUse)}
+      {console.log(insulinPump)}
+      {console.log(glucometer)}
+      {console.log(sensor)}
       <Text>YOUR EMERGENCY TRAVEL BAG</Text>
       <BouncyCheckbox
         size={15}
