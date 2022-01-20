@@ -1,64 +1,109 @@
-import React from "React";
-import { View, ScrollView, Button } from "react-native";
+import { React, useState } from "react";
+import { View, ScrollView, Button, TextInput, Text } from "react-native";
+import BouncyCheckbox from "react-native-bouncy-checkbox";
+import { Header } from "react-native-elements";
 
 //The calculator input form
 //Should take inputs like destination, duration of trip, insulin use per day, devices used
 //Have a button to return to home screen
 //Have a button to generate checklist
 
+//NOTE TO SELF_ make checkkboxes for destination
+//Notes to self: make checkbox inputs for destination & devices
+
 function CalculatorInput({ navigation }) {
+  const [localDestination, setLocalDestination] = useState(false);
+  const [abroad, setAbroad] = useState(false);
+  const [duration, setDuration] = useState([]);
+  const [insulinUse, setInsulinUse] = useState([]);
+  const [insulinPump, setInsulinPump] = useState(false);
+  const [glucometer, setGlucometer] = useState(false);
+  const [sensor, setSensor] = useState(false);
+
   return (
     <ScrollView>
-      <h1> Calculate </h1>
-      <Button title="GO BACK" />
+      <Text color="blue" size="60px">
+        Where are you heading?
+      </Text>
+      <BouncyCheckbox
+        size={15}
+        fillColor="blue"
+        unfillColor="#FFFFFF"
+        text="Abroad"
+        iconStyle={{ borderColor: "black" }}
+        textStyle={{
+          fontFamily: "Times New Roman",
+          color: "black",
+          textDecorationLine: "none",
+        }}
+      />
 
-      <ul>
-        <li>
-          <label for="destination">Destination:</label>
-          <select name="destination" id="destination">
-            <option value="local">local</option>
-            <option value="international">international</option>
-          </select>
-        </li>
-        <li>
-          <label for="Duration">Duration:</label>
-        </li>
-        <input name="duration"></input> days
-        <li>
-          <label for="InsulinUse">Average insulin use:</label>
-        </li>
-        <input name="insulin-use"></input> units/day
-        <label for="devices">
-          <h2>Devices:</h2>
-        </label>
-        <li>
-          <input
-            type="checkbox"
-            id="MiniMed Insulin Pump"
-            name="MiniMed Insulin Pump"
-            value="MiniMed Insuln Pump"
-          ></input>
-          <label for="MiniMed Insulin Pump">MiniMed Insulin Pump</label>
-        </li>
-        <li>
-          <input
-            type="checkbox"
-            id="Freestyle Libre Sensor"
-            name="Freestyle Libre Sensor"
-            value="Freestyle Libre Sensor"
-          ></input>
-          <label for="Freestyle Libre Sensor">Freestyle Libre Sensor</label>
-        </li>
-        <li>
-          <input
-            type="checkbox"
-            id="Glucometer"
-            name="Glucometer"
-            value="Glucometer"
-          ></input>
-          <label for="Glucometer">Glucometer</label>
-        </li>
-      </ul>
+      <BouncyCheckbox
+        size={15}
+        fillColor="blue"
+        unfillColor="#FFFFFF"
+        text="Local"
+        iconStyle={{ borderColor: "black" }}
+        textStyle={{
+          fontFamily: "Times New Roman",
+          color: "black",
+          textDecorationLine: "none",
+        }}
+      />
+
+      <Text> Insulin use per day: </Text>
+      <TextInput
+        placeholder="enter units"
+        onChangeText={(text) => setInsulinUse(text)}
+      ></TextInput>
+
+      <Text>How long will you be away?</Text>
+      <TextInput
+        placeholder="enter days"
+        onChangeText={(text) => setDuration(text)}
+      ></TextInput>
+
+      <Text>Devices you use:</Text>
+
+      <BouncyCheckbox
+        size={15}
+        fillColor="blue"
+        unfillColor="#FFFFFF"
+        text="Minimed Insulin Pump"
+        iconStyle={{ borderColor: "black" }}
+        textStyle={{
+          fontFamily: "Times New Roman",
+          color: "black",
+          textDecorationLine: "none",
+        }}
+      />
+
+      <BouncyCheckbox
+        size={15}
+        fillColor="blue"
+        unfillColor="#FFFFFF"
+        text="Freestlye Glucometer"
+        iconStyle={{ borderColor: "black" }}
+        textStyle={{
+          fontFamily: "Times New Roman",
+          color: "black",
+          textDecorationLine: "none",
+        }}
+      />
+
+      <BouncyCheckbox
+        size={15}
+        fillColor="blue"
+        unfillColor="#FFFFFF"
+        text="Freestyle Libre Sensor"
+        iconStyle={{ borderColor: "black" }}
+        textStyle={{
+          fontFamily: "Times New Roman",
+          color: "black",
+          textDecorationLine: "none",
+        }}
+      />
+
       <Button
         title="Generate Checklist"
         onPress={() => navigation.navigate("Travel Checklist")}

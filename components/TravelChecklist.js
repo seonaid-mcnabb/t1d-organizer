@@ -1,5 +1,6 @@
-import React from "React";
-import { ScrollView, View, Button } from "react-native";
+import React from "react";
+import { ScrollView, View, Button, Text } from "react-native";
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 //The travel checklist should
 //Have a button to go back to input form
@@ -11,50 +12,174 @@ import { ScrollView, View, Button } from "react-native";
 function TravelChecklist() {
   return (
     <View>
-      <h1>Travel Checklist</h1>
-      <Button title="GO BACK" />
-      <ul>
-        <h2>Travel Documents</h2>
-        <li>
-          Medical Letter <input type="checkbox"></input>
-        </li>
+      <Text>YOUR EMERGENCY TRAVEL BAG</Text>
+      <BouncyCheckbox
+        size={15}
+        fillColor="blue"
+        unfillColor="#FFFFFF"
+        text="Glucometer"
+        iconStyle={{ borderColor: "black" }}
+        textStyle={{
+          fontFamily: "Times New Roman",
+          color: "black",
+        }}
+      />
 
-        <h2>Insulin Pump Materials</h2>
-        <li>
-          {" "}
-          AA Batteries
-          <input type="checkbox"></input>
-        </li>
+      <BouncyCheckbox
+        size={15}
+        fillColor="blue"
+        unfillColor="#FFFFFF"
+        text="50 test strips"
+        iconStyle={{ borderColor: "black" }}
+        textStyle={{
+          fontFamily: "Times New Roman",
+          color: "black",
+        }}
+      />
 
-        <h2>Sensor Materials</h2>
-        <li>
-          {" "}
-          2 sensor boxes
-          <input type="checkbox"></input>
-        </li>
+      <BouncyCheckbox
+        size={15}
+        fillColor="blue"
+        unfillColor="#FFFFFF"
+        text="2 Infusion Sets"
+        iconStyle={{ borderColor: "black" }}
+        textStyle={{
+          fontFamily: "Times New Roman",
+          color: "black",
+        }}
+      />
 
-        <h2>Glucometer Materials</h2>
-        <li>
-          {" "}
-          100 test strips
-          <input type="checkbox"></input>
-        </li>
+      <BouncyCheckbox
+        size={15}
+        fillColor="blue"
+        unfillColor="#FFFFFF"
+        text="2 Reservoirs"
+        iconStyle={{ borderColor: "black" }}
+        textStyle={{
+          fontFamily: "Times New Roman",
+          color: "black",
+        }}
+      />
 
-        <h2>Emergency Supplies</h2>
-        <li>
-          {" "}
-          1 Glucagon
-          <input type="checkbox"></input>
-        </li>
+      <BouncyCheckbox
+        size={15}
+        fillColor="blue"
+        unfillColor="#FFFFFF"
+        text="1 vial of Humalog insulin"
+        iconStyle={{ borderColor: "black" }}
+        textStyle={{
+          fontFamily: "Times New Roman",
+          color: "black",
+        }}
+      />
 
-        <h2>Travel Bag</h2>
-        <li>
-          {" "}
-          2 Reservoirs
-          <input type="checkbox"></input>
-        </li>
-      </ul>
-      <Button title="I'm ready to go!" />
+      <BouncyCheckbox
+        size={15}
+        fillColor="blue"
+        unfillColor="#FFFFFF"
+        text="Pump Inserter"
+        iconStyle={{ borderColor: "black" }}
+        textStyle={{
+          fontFamily: "Times New Roman",
+          color: "black",
+        }}
+      />
+
+      <BouncyCheckbox
+        size={15}
+        fillColor="blue"
+        unfillColor="#FFFFFF"
+        text="Sensor Reader"
+        iconStyle={{ borderColor: "black" }}
+        textStyle={{
+          fontFamily: "Times New Roman",
+          color: "black",
+        }}
+      />
+
+      <BouncyCheckbox
+        size={15}
+        fillColor="blue"
+        unfillColor="#FFFFFF"
+        text="Replacement sensor (1 box)"
+        iconStyle={{ borderColor: "black" }}
+        textStyle={{
+          fontFamily: "Times New Roman",
+          color: "black",
+        }}
+      />
+
+      <BouncyCheckbox
+        size={15}
+        fillColor="blue"
+        unfillColor="#FFFFFF"
+        text="4-pack of AA batteries"
+        iconStyle={{ borderColor: "black" }}
+        textStyle={{
+          fontFamily: "Times New Roman",
+          color: "black",
+        }}
+      />
+
+      <BouncyCheckbox
+        size={15}
+        fillColor="blue"
+        unfillColor="#FFFFFF"
+        text="1 Lantus Pen"
+        iconStyle={{ borderColor: "black" }}
+        textStyle={{
+          fontFamily: "Times New Roman",
+          color: "black",
+        }}
+      />
+
+      <BouncyCheckbox
+        size={15}
+        fillColor="blue"
+        unfillColor="#FFFFFF"
+        text="1 Humalog Pen"
+        iconStyle={{ borderColor: "black" }}
+        textStyle={{
+          fontFamily: "Times New Roman",
+          color: "black",
+        }}
+      />
+
+      <BouncyCheckbox
+        size={15}
+        fillColor="blue"
+        unfillColor="#FFFFFF"
+        text="10 Insulin Pen Tops"
+        iconStyle={{ borderColor: "black" }}
+        textStyle={{
+          fontFamily: "Times New Roman",
+          color: "black",
+        }}
+      />
+
+      <BouncyCheckbox
+        size={15}
+        fillColor="blue"
+        unfillColor="#FFFFFF"
+        text="Sensor Device Charger"
+        iconStyle={{ borderColor: "black" }}
+        textStyle={{
+          fontFamily: "Times New Roman",
+          color: "black",
+        }}
+      />
+
+      <BouncyCheckbox
+        size={15}
+        fillColor="blue"
+        unfillColor="#FFFFFF"
+        text="Juice/Candy (at least 60 carbs' worth)"
+        iconStyle={{ borderColor: "black" }}
+        textStyle={{
+          fontFamily: "Times New Roman",
+          color: "black",
+        }}
+      />
     </View>
   );
 }
