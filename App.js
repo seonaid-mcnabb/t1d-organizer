@@ -4,10 +4,7 @@ import { View, Text, Button, FlatList } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import {
-  Card,
-  Title,
-  Paragraph,
-  List,
+  DefaultTheme as PaperDefaultTheme,
   Provider as PaperProvider,
 } from "react-native-paper";
 //Components currently used in StackNavigator
@@ -74,7 +71,7 @@ function App({ navigation }) {
   }, []);
 
   return (
-    <PaperProvider>
+    <PaperProvider theme={PaperDefaultTheme}>
       <NavigationContainer>
         <Context1.Provider value={contacts}>
           <Stack.Navigator>
