@@ -21,17 +21,346 @@ function TravelChecklist({ route }) {
   } = route.params;
 
   return (
-    <View>
-      <Text>INSULIN PUMP MATERIALS</Text>
-      <Text>GLUCOSE SENSOR MATERIALS</Text>
-      <Text>GLUCOMETER MATERIALS</Text>
-      <Text>EMERGENCY - ALTERNATIVE TREATMENT SUPPLIES</Text>
+    <ScrollView>
+      <Text>ALL THIS STUFF GOES IN MEDICAL CARRY-ON</Text>
+      {insulinPump === true ? <Text>INSULIN PUMP MATERIALS</Text> : null}
+      {insulinPump === true ? (
+        <BouncyCheckbox
+          size={15}
+          fillColor="blue"
+          unfillColor="#FFFFFF"
+          text="Pump Inserter"
+          iconStyle={{ borderColor: "black" }}
+          textStyle={{
+            fontFamily: "Times New Roman",
+            color: "black",
+          }}
+        />
+      ) : null}
+
+      {insulinPump === true ? (
+        <BouncyCheckbox
+          size={15}
+          fillColor="blue"
+          unfillColor="#FFFFFF"
+          text="AA Batteries: 4-pack"
+          iconStyle={{ borderColor: "black" }}
+          textStyle={{
+            fontFamily: "Times New Roman",
+            color: "black",
+          }}
+        />
+      ) : null}
+
+      {insulinPump === true && duration <= 7 ? (
+        <BouncyCheckbox
+          size={15}
+          fillColor="blue"
+          unfillColor="#FFFFFF"
+          text="5 Infusion Sites"
+          iconStyle={{ borderColor: "black" }}
+          textStyle={{
+            fontFamily: "Times New Roman",
+            color: "black",
+          }}
+        />
+      ) : null}
+
+      {insulinPump === true && duration > 7 ? (
+        <BouncyCheckbox
+          size={15}
+          fillColor="blue"
+          unfillColor="#FFFFFF"
+          text={`${Math.ceil(duration / 3) * 2} infusion sites`}
+          iconStyle={{ borderColor: "black" }}
+          textStyle={{
+            fontFamily: "Times New Roman",
+            color: "black",
+          }}
+        />
+      ) : null}
+
+      {insulinPump === true && duration <= 7 ? (
+        <BouncyCheckbox
+          size={15}
+          fillColor="blue"
+          unfillColor="#FFFFFF"
+          text="5 Reservoirs"
+          iconStyle={{ borderColor: "black" }}
+          textStyle={{
+            fontFamily: "Times New Roman",
+            color: "black",
+          }}
+        />
+      ) : null}
+
+      {insulinPump === true && duration > 7 ? (
+        <BouncyCheckbox
+          size={15}
+          fillColor="blue"
+          unfillColor="#FFFFFF"
+          text={`${Math.ceil(duration / 3) * 2} reservoirs`}
+          iconStyle={{ borderColor: "black" }}
+          textStyle={{
+            fontFamily: "Times New Roman",
+            color: "black",
+          }}
+        />
+      ) : null}
+
+      {insulinPump === true && 1000 / insulinUse >= duration ? (
+        <BouncyCheckbox
+          size={15}
+          fillColor="blue"
+          unfillColor="#FFFFFF"
+          text="2 Vials of Humalog Insulin"
+          iconStyle={{ borderColor: "black" }}
+          textStyle={{
+            fontFamily: "Times New Roman",
+            color: "black",
+          }}
+        />
+      ) : null}
+
+      {insulinPump === true && 1000 / insulinUse < duration ? (
+        <BouncyCheckbox
+          size={15}
+          fillColor="blue"
+          unfillColor="#FFFFFF"
+          text={`You need to work on this equation`}
+          iconStyle={{ borderColor: "black" }}
+          textStyle={{
+            fontFamily: "Times New Roman",
+            color: "black",
+          }}
+        />
+      ) : null}
+
+      {sensor === true ? <Text>GLUCOSE SENSOR MATERIALS</Text> : null}
+
+      {sensor === true ? (
+        <BouncyCheckbox
+          size={15}
+          fillColor="blue"
+          unfillColor="#FFFFFF"
+          text="Reader Charger"
+          iconStyle={{ borderColor: "black" }}
+          textStyle={{
+            fontFamily: "Times New Roman",
+            color: "black",
+          }}
+        />
+      ) : null}
+
+      {sensor === true ? (
+        <BouncyCheckbox
+          size={15}
+          fillColor="blue"
+          unfillColor="#FFFFFF"
+          text="Data Transfer Cable"
+          iconStyle={{ borderColor: "black" }}
+          textStyle={{
+            fontFamily: "Times New Roman",
+            color: "black",
+          }}
+        />
+      ) : null}
+
+      {sensor === true && duration >= 14 ? (
+        <BouncyCheckbox
+          size={15}
+          fillColor="blue"
+          unfillColor="#FFFFFF"
+          text={`${Math.round(duration / 14) + 1} sensors`}
+          iconStyle={{ borderColor: "black" }}
+          textStyle={{
+            fontFamily: "Times New Roman",
+            color: "black",
+          }}
+        />
+      ) : null}
+
+      {sensor === true && duration <= 14 ? (
+        <BouncyCheckbox
+          size={15}
+          fillColor="blue"
+          unfillColor="#FFFFFF"
+          text="2 Sensors"
+          iconStyle={{ borderColor: "black" }}
+          textStyle={{
+            fontFamily: "Times New Roman",
+            color: "black",
+          }}
+        />
+      ) : null}
+
+      {glucometer === true ? <Text>GLUCOMETER MATERIALS</Text> : null}
+      {glucometer === true ? (
+        <BouncyCheckbox
+          size={15}
+          fillColor="blue"
+          unfillColor="#FFFFFF"
+          text="Back-up Glucometer"
+          iconStyle={{ borderColor: "black" }}
+          textStyle={{
+            fontFamily: "Times New Roman",
+            color: "black",
+          }}
+        />
+      ) : null}
+
+      {glucometer === true ? (
+        <BouncyCheckbox
+          size={15}
+          fillColor="blue"
+          unfillColor="#FFFFFF"
+          text="Glucometer Charger"
+          iconStyle={{ borderColor: "black" }}
+          textStyle={{
+            fontFamily: "Times New Roman",
+            color: "black",
+          }}
+        />
+      ) : null}
+
+      {glucometer === true && duration > 14 ? (
+        <BouncyCheckbox
+          size={15}
+          fillColor="blue"
+          unfillColor="#FFFFFF"
+          text="Box of lancets"
+          iconStyle={{ borderColor: "black" }}
+          textStyle={{
+            fontFamily: "Times New Roman",
+            color: "black",
+          }}
+        />
+      ) : null}
+
+      {glucometer === true && sensor === true && duration <= 14 ? (
+        <BouncyCheckbox
+          size={15}
+          fillColor="blue"
+          unfillColor="#FFFFFF"
+          text={`${duration * 5} test strips`}
+          iconStyle={{ borderColor: "black" }}
+          textStyle={{
+            fontFamily: "Times New Roman",
+            color: "black",
+          }}
+        />
+      ) : null}
+
+      {glucometer === true && sensor === true && duration > 14 ? (
+        <BouncyCheckbox
+          size={15}
+          fillColor="blue"
+          unfillColor="#FFFFFF"
+          text={`${duration * 8} test strips`}
+          iconStyle={{ borderColor: "black" }}
+          textStyle={{
+            fontFamily: "Times New Roman",
+            color: "black",
+          }}
+        />
+      ) : null}
+
+      {glucometer === true && sensor === false ? (
+        <BouncyCheckbox
+          size={15}
+          fillColor="blue"
+          unfillColor="#FFFFFF"
+          text={`${duration * 8} test strips`}
+          iconStyle={{ borderColor: "black" }}
+          textStyle={{
+            fontFamily: "Times New Roman",
+            color: "black",
+          }}
+        />
+      ) : null}
+      <Text>IF EVERYTHING FAILS - ALTERNATIVE TREATMENT SUPPLIES</Text>
+      <BouncyCheckbox
+        size={15}
+        fillColor="blue"
+        unfillColor="#FFFFFF"
+        text="Glucagon: check expiration date!"
+        iconStyle={{ borderColor: "black" }}
+        textStyle={{
+          fontFamily: "Times New Roman",
+          color: "black",
+        }}
+      />
+
+      <BouncyCheckbox
+        size={15}
+        fillColor="blue"
+        unfillColor="#FFFFFF"
+        text="2 Lantus pens"
+        iconStyle={{ borderColor: "black" }}
+        textStyle={{
+          fontFamily: "Times New Roman",
+          color: "black",
+        }}
+      />
+
+      <BouncyCheckbox
+        size={15}
+        fillColor="blue"
+        unfillColor="#FFFFFF"
+        text="2 Humalog pens"
+        iconStyle={{ borderColor: "black" }}
+        textStyle={{
+          fontFamily: "Times New Roman",
+          color: "black",
+        }}
+      />
+
+      <BouncyCheckbox
+        size={15}
+        fillColor="blue"
+        unfillColor="#FFFFFF"
+        text="1 Box of Insulin Pen Syringes"
+        iconStyle={{ borderColor: "black" }}
+        textStyle={{
+          fontFamily: "Times New Roman",
+          color: "black",
+        }}
+      />
+
+      <BouncyCheckbox
+        size={15}
+        fillColor="blue"
+        unfillColor="#FFFFFF"
+        text="Spare Insulin Pump"
+        iconStyle={{ borderColor: "black" }}
+        textStyle={{
+          fontFamily: "Times New Roman",
+          color: "black",
+        }}
+      />
+
+      <BouncyCheckbox
+        size={15}
+        fillColor="blue"
+        unfillColor="#FFFFFF"
+        text="AAA Batteries: 4-pack"
+        iconStyle={{ borderColor: "black" }}
+        textStyle={{
+          fontFamily: "Times New Roman",
+          color: "black",
+        }}
+      />
+
+      <Text>
+        ALL OF THIS STUFF GOES IN A SMALLER CARRY-ON / EASILY ACCESSIBLE BAG
+      </Text>
+
       <Text>TRAVEL DOCUMENTS</Text>
       <BouncyCheckbox
         size={15}
         fillColor="blue"
         unfillColor="#FFFFFF"
-        text="Passport"
+        text="Passport or ID Card"
         iconStyle={{ borderColor: "black" }}
         textStyle={{
           fontFamily: "Times New Roman",
@@ -53,17 +382,19 @@ function TravelChecklist({ route }) {
         />
       ) : null}
 
-      <BouncyCheckbox
-        size={15}
-        fillColor="blue"
-        unfillColor="#FFFFFF"
-        text="Travel Insurance"
-        iconStyle={{ borderColor: "black" }}
-        textStyle={{
-          fontFamily: "Times New Roman",
-          color: "black",
-        }}
-      />
+      {abroad === true ? (
+        <BouncyCheckbox
+          size={15}
+          fillColor="blue"
+          unfillColor="#FFFFFF"
+          text="Travelers insurance or EU International Health Card"
+          iconStyle={{ borderColor: "black" }}
+          textStyle={{
+            fontFamily: "Times New Roman",
+            color: "black",
+          }}
+        />
+      ) : null}
 
       <BouncyCheckbox
         size={15}
@@ -76,7 +407,19 @@ function TravelChecklist({ route }) {
           color: "black",
         }}
       />
-      <Text>FLIGHT/TRAVEL BAG</Text>
+      <Text>IN-FLIGHT / TRAVEL BAG</Text>
+
+      <BouncyCheckbox
+        size={15}
+        fillColor="blue"
+        unfillColor="#FFFFFF"
+        text="Sensor Data Reader"
+        iconStyle={{ borderColor: "black" }}
+        textStyle={{
+          fontFamily: "Times New Roman",
+          color: "black",
+        }}
+      />
       <BouncyCheckbox
         size={15}
         fillColor="blue"
@@ -213,7 +556,19 @@ function TravelChecklist({ route }) {
         size={15}
         fillColor="blue"
         unfillColor="#FFFFFF"
-        text="10 Insulin Pen Tops"
+        text="10 lancets"
+        iconStyle={{ borderColor: "black" }}
+        textStyle={{
+          fontFamily: "Times New Roman",
+          color: "black",
+        }}
+      />
+
+      <BouncyCheckbox
+        size={15}
+        fillColor="blue"
+        unfillColor="#FFFFFF"
+        text="10 Insulin Pen Syringes"
         iconStyle={{ borderColor: "black" }}
         textStyle={{
           fontFamily: "Times New Roman",
@@ -244,7 +599,9 @@ function TravelChecklist({ route }) {
           color: "black",
         }}
       />
-    </View>
+
+      <Button title="I'm ready to go!"></Button>
+    </ScrollView>
   );
 }
 
