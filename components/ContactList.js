@@ -1,5 +1,5 @@
-import { React, useContext } from "react";
-import { ScrollView, View, Button, FlatList, Text } from "react-native";
+import { React, useContext, useEffect, useState, useCallback } from "react";
+import { ScrollView, View, FlatList, Text, Button } from "react-native";
 import { ListItem, List } from "react-native-elements";
 import { Context1 } from "../App";
 
@@ -9,6 +9,10 @@ import { Context1 } from "../App";
 
 function ContactList({ navigation }) {
   const context = useContext(Context1);
+  //This and the useEffect below are currently redundant because they are on the context from app.js
+  //but I've added it here so that changes are reflected immediately when a contact is added or deleted
+  const [contacts, setContacts] = useState([]);
+
   console.log(context);
   return (
     <View>

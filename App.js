@@ -3,8 +3,13 @@ import { useState, useEffect } from "react";
 import { View, Text, Button, FlatList } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
+import {
+  Card,
+  Title,
+  Paragraph,
+  List,
+  Provider as PaperProvider,
+} from "react-native-paper";
 //Components currently used in StackNavigator
 import ContactList from "./components/ContactList";
 import CalculatorInput from "./components/CalculatorInput";
@@ -69,62 +74,25 @@ function App({ navigation }) {
   }, []);
 
   return (
-    <NavigationContainer>
-      <Context1.Provider value={contacts}>
-        <Stack.Navigator>
-          <Stack.Screen name="Home" component={WelcomeScreen} />
-          <Stack.Screen name="Contacts" component={ContactList} />
-          <Stack.Screen name="Calendar" component={Calendar} />
-          <Stack.Screen name="Calculator" component={CalculatorInput} />
-          <Stack.Screen name="Add New Contact" component={AddNewContactForm} />
-          <Stack.Screen name="Contact Details" component={ContactDetails} />
-          <Stack.Screen name="Travel Checklist" component={TravelChecklist} />
-        </Stack.Navigator>
-      </Context1.Provider>
-    </NavigationContainer>
+    <PaperProvider>
+      <NavigationContainer>
+        <Context1.Provider value={contacts}>
+          <Stack.Navigator>
+            <Stack.Screen name="Home" component={WelcomeScreen} />
+            <Stack.Screen name="Contacts" component={ContactList} />
+            <Stack.Screen name="Calendar" component={Calendar} />
+            <Stack.Screen name="Calculator" component={CalculatorInput} />
+            <Stack.Screen
+              name="Add New Contact"
+              component={AddNewContactForm}
+            />
+            <Stack.Screen name="Contact Details" component={ContactDetails} />
+            <Stack.Screen name="Travel Checklist" component={TravelChecklist} />
+          </Stack.Navigator>
+        </Context1.Provider>
+      </NavigationContainer>
+    </PaperProvider>
   );
 }
 
 export default App;
-
-/*Storing currently function app cuz im about to fuck it up
-function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={WelcomeScreen} />
-        <Stack.Screen name="Contacts" component={ContactList} />
-        <Stack.Screen name="Calendar" component={Calendar} />
-        <Stack.Screen name="Calculator" component={CalculatorInput} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-}
-/*
-
-/*This properly fetches contacts list from database, but storing here for later
-const [contacts, setContacts] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:5000/contacts")
-      .then((res) => {
-        //
-        if (res.ok) {
-          //if the response is received correctly
-          console.log(res);
-          return res.json(); //return the response as a javascript object (this is what .json() does)
-        } else {
-          throw new Error("Not 2xx response");
-        }
-      })
-      .then((json) => {
-        // upon success, update tasks
-        setContacts(json);
-        console.log(json);
-      })
-      .catch((error) => {
-        console.log(error);
-        // upon failure, show error message
-      });
-  }, []);
-  */

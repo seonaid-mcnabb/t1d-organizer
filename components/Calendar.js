@@ -1,12 +1,20 @@
 import React from "react";
 import { View, ScrollView, Button, Text } from "react-native";
+import { Calendar, CalendarList, Agenda } from "react-native-calendars";
 
-function Calendar() {
+function CalendarView() {
+  const onDayPress: CalendarProps["onDayPress"] = (day) => {
+    setSelected(day.dateString);
+  };
+
   return (
     <View>
-      <Text>Eventually there will be a calendar here</Text>
+      <Calendar />
+
+      <Button title="Add An Appointment"></Button>
+      <Button title="Track Prescriptions"></Button>
     </View>
   );
 }
 
-export default Calendar;
+export default CalendarView;
