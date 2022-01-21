@@ -19,9 +19,64 @@ function TravelChecklist({ route }) {
     glucometer,
     sensor,
   } = route.params;
+
   return (
     <View>
-      <Text>YOUR EMERGENCY TRAVEL BAG</Text>
+      <Text>INSULIN PUMP MATERIALS</Text>
+      <Text>GLUCOSE SENSOR MATERIALS</Text>
+      <Text>GLUCOMETER MATERIALS</Text>
+      <Text>EMERGENCY - ALTERNATIVE TREATMENT SUPPLIES</Text>
+      <Text>TRAVEL DOCUMENTS</Text>
+      <BouncyCheckbox
+        size={15}
+        fillColor="blue"
+        unfillColor="#FFFFFF"
+        text="Passport"
+        iconStyle={{ borderColor: "black" }}
+        textStyle={{
+          fontFamily: "Times New Roman",
+          color: "black",
+        }}
+      />
+
+      {abroad === true ? (
+        <BouncyCheckbox
+          size={15}
+          fillColor="blue"
+          unfillColor="#FFFFFF"
+          text="Airport Medical Permission Letter"
+          iconStyle={{ borderColor: "black" }}
+          textStyle={{
+            fontFamily: "Times New Roman",
+            color: "black",
+          }}
+        />
+      ) : null}
+
+      <BouncyCheckbox
+        size={15}
+        fillColor="blue"
+        unfillColor="#FFFFFF"
+        text="Travel Insurance"
+        iconStyle={{ borderColor: "black" }}
+        textStyle={{
+          fontFamily: "Times New Roman",
+          color: "black",
+        }}
+      />
+
+      <BouncyCheckbox
+        size={15}
+        fillColor="blue"
+        unfillColor="#FFFFFF"
+        text="ID Bracelet"
+        iconStyle={{ borderColor: "black" }}
+        textStyle={{
+          fontFamily: "Times New Roman",
+          color: "black",
+        }}
+      />
+      <Text>FLIGHT/TRAVEL BAG</Text>
       <BouncyCheckbox
         size={15}
         fillColor="blue"

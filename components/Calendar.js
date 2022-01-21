@@ -1,10 +1,10 @@
-import React from "React";
-import { View, ScrollView, Button } from "react-native";
+import React from "react";
+import { View, ScrollView, Button, Text } from "react-native";
 
 function Calendar() {
   return (
     <View>
-      <h1>Eventually there will be a calendar here</h1>
+      <Text>Eventually there will be a calendar here</Text>
     </View>
   );
 }

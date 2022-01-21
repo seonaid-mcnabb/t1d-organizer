@@ -1,4 +1,4 @@
-import * as React from "React";
+import * as React from "react";
 import { useState, useEffect } from "react";
 import { View, Text, Button, FlatList } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
