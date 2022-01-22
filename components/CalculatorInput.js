@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { ScrollView, Button, TextInput, Text } from "react-native";
+import { ScrollView } from "react-native";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
+import { TextInput, Text, Checkbox, Button } from "react-native-paper";
 
 //CALCULATOR INPUT FORM FUNCTIONALITY//
 /*--Renders a form with various possible inputs (currently only tailored to my personal treatments)
@@ -22,100 +23,94 @@ function CalculatorInput({ navigation }) {
 
   return (
     <ScrollView>
-      <Text color="blue" size="60px">
-        Where are you heading?
-      </Text>
-      <BouncyCheckbox
-        size={15}
-        fillColor="blue"
-        unfillColor="#FFFFFF"
-        text="Abroad"
-        iconStyle={{ borderColor: "black" }}
-        textStyle={{
-          fontFamily: "Times New Roman",
-          color: "black",
-          textDecorationLine: "none",
+      <Text>Where are you heading?</Text>
+      <Checkbox.Item
+        label="Abroad"
+        position="leading"
+        color="#e6005c"
+        status={abroad ? "checked" : "unchecked"}
+        onPress={() => {
+          setAbroad(!abroad);
         }}
-        onPress={() => (abroad === false ? setAbroad(true) : setAbroad(false))}
       />
 
-      <BouncyCheckbox
-        size={15}
-        fillColor="blue"
-        unfillColor="#FFFFFF"
-        text="Local"
-        iconStyle={{ borderColor: "black" }}
-        textStyle={{
-          fontFamily: "Times New Roman",
-          color: "black",
-          textDecorationLine: "none",
+      <Checkbox.Item
+        label="Local"
+        position="leading"
+        color="#e6005c"
+        status={localDestination ? "checked" : "unchecked"}
+        onPress={() => {
+          setLocalDestination(!localDestination);
         }}
-        onPress={() =>
-          localDestination === false
-            ? setLocalDestination(true)
-            : setLocalDestination(false)
-        }
       />
 
       <Text> Insulin use per day: </Text>
       <TextInput
+        mode="outlined"
+        activeOutlineColor="#3333ff"
         placeholder="enter units"
         onChangeText={(text) => setInsulinUse(text)}
       ></TextInput>
 
       <Text>How long will you be away?</Text>
       <TextInput
+        mode="outlined"
+        activeOutlineColor="#3333ff"
         placeholder="enter days"
         onChangeText={(text) => setDuration(text)}
       ></TextInput>
 
       <Text>Devices you use:</Text>
 
-      <BouncyCheckbox
-        size={15}
-        fillColor="blue"
-        unfillColor="#FFFFFF"
-        text="Minimed Insulin Pump"
-        iconStyle={{ borderColor: "black" }}
-        textStyle={{
-          fontFamily: "Times New Roman",
-          color: "black",
-          textDecorationLine: "none",
+      <Checkbox.Item
+        label="Minimed Insulin Pump"
+        position="leading"
+        color="#e6005c"
+        status={insulinPump ? "checked" : "unchecked"}
+        onPress={() => {
+          setInsulinPump(!insulinPump);
         }}
-        onPress={() =>
-          insulinPump === false ? setInsulinPump(true) : setInsulinPump(false)
-        }
       />
 
-      <BouncyCheckbox
-        size={15}
-        fillColor="blue"
-        unfillColor="#FFFFFF"
-        text="Freestlye Glucometer"
-        iconStyle={{ borderColor: "black" }}
-        textStyle={{
-          fontFamily: "Times New Roman",
-          color: "black",
-          textDecorationLine: "none",
+      <Checkbox.Item
+        label="Freestyle Glucometer"
+        position="leading"
+        color="#e6005c"
+        status={glucometer ? "checked" : "unchecked"}
+        onPress={() => {
+          setGlucometer(!glucometer);
         }}
-        onPress={() =>
-          glucometer === false ? setGlucometer(true) : setGlucometer(false)
-        }
       />
 
-      <BouncyCheckbox
-        size={15}
-        fillColor="blue"
-        unfillColor="#FFFFFF"
-        text="Freestyle Libre Sensor"
-        iconStyle={{ borderColor: "black" }}
-        textStyle={{
-          fontFamily: "Times New Roman",
-          color: "black",
-          textDecorationLine: "none",
+      <Checkbox.Item
+        label="Freestyle Glucometer"
+        position="leading"
+        color="#e6005c"
+        status={sensor ? "checked" : "unchecked"}
+        onPress={() => {
+          setSensor(!sensor);
         }}
-        onPress={() => (sensor === false ? setSensor(true) : setSensor(false))}
       />
+
+      <Button
+        icon="format-list-checkbox"
+        mode="contained"
+        color="#0000b3"
+        onPress={() =>
+          navigation.navigate("Travel Checklist", {
+            abroad: abroad,
+            localDestination: localDestination,
+            duration: duration,
+            insulinUse: insulinUse,
+            insulinPump: insulinPump,
+            glucometer: glucometer,
+            sensor: sensor,
+          })
+        }
+      >
+        {" "}
+        Generate Checklist{" "}
+      </Button>
 
       <Button
         title="Generate Checklist"

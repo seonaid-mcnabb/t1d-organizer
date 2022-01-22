@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { View, Button } from "react-native";
+import { View, StyleSheet } from "react-native";
+import { Button } from "react-native-paper";
 import { Calendar, Agenda } from "react-native-calendars";
 
 //CALENDAR VIEW//
@@ -16,6 +17,18 @@ function CalendarView({ navigation }) {
   //const onDayPress: CalendarProps["onDayPress"] = (day) => {
   //setSelected(day.dateString);
   //};
+
+  const styles = StyleSheet.create({
+    button: {
+      marginBottom: 5,
+      padding: 10,
+    },
+    space: {
+      width: 20, // or whatever size you need
+      height: 20,
+    },
+  });
+
   const [appointments, setAppointments] = useState([]);
   const [materials, setMaterials] = useState([]);
   //Grabs all apppointments from backend and sets calendar state
@@ -106,18 +119,31 @@ function CalendarView({ navigation }) {
           textDayHeaderFontSize: 16,
         }}
       />
-
       <Button
-        title="Add An Appointment"
+        style={styles.button}
+        icon="pencil-plus-outline"
+        mode="contained"
+        color="#0000b3"
         onPress={() => navigation.navigate("Add To Calendar")}
-      ></Button>
-      <Button
-        title="Add A Received Prescription"
-        onPress={() => navigation.navigate("Add New Prescription")}
-      ></Button>
+      >
+        Add An Appointment
+      </Button>
 
       <Button
-        title="View List of Appointments and Prescriptions"
+        style={styles.button}
+        icon="pill"
+        mode="contained"
+        color="#0000b3"
+        onPress={() => navigation.navigate("Add New Prescription")}
+      >
+        Add New Prescription
+      </Button>
+
+      <Button
+        style={styles.button}
+        icon="format-list-checkbox"
+        mode="contained"
+        color="#0000b3"
         onPress={() =>
           navigation.navigate(
             "App and Prescriptions List View",
@@ -127,7 +153,9 @@ function CalendarView({ navigation }) {
             { materials: materials }
           )
         }
-      />
+      >
+        View Upcoming Appointments and Prescription Renewals
+      </Button>
     </View>
   );
 }

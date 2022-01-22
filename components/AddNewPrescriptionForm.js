@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Button, Text, TextInput, View } from "react-native";
+import { Text, View } from "react-native";
 import DateField from "react-native-datefield";
+import { TextInput, Button } from "react-native-paper";
 
 //ADD NEW PRESCRIPTION FUNCTIONALITY//
 /*
@@ -40,9 +41,10 @@ function AddNewPrescriptionForm({ navigation }) {
 
   return (
     <View>
-      <Text>Medication Name:</Text>
       <TextInput
-        placeholder="Add name"
+        mode="outlined"
+        activeOutlineColor="#3333ff"
+        label="Medication or Supply"
         onChangeText={(text) => setMedname(text)}
       />
 
@@ -55,25 +57,35 @@ function AddNewPrescriptionForm({ navigation }) {
         onSubmit={(value) => setDatereceived(value)}
       />
 
-      <Text>How long will it last:</Text>
       <TextInput
-        placeholder="Add duration"
+        mode="outlined"
+        activeOutlineColor="#3333ff"
+        label="Duration"
         onChangeText={(text) => setDuration(text)}
       />
 
-      <Text>Order Method:</Text>
       <TextInput
-        placeholder="Add method"
+        mode="outlined"
+        activeOutlineColor="#3333ff"
+        label="Order Method"
         onChangeText={(text) => setOrdermethod(text)}
       />
 
       <Text>Notes:</Text>
       <TextInput
-        placeholder="Add notes"
+        mode="outlined"
+        activeOutlineColor="#3333ff"
+        label="Notes"
         onChangeText={(text) => setNotes(text)}
       />
-
-      <Button title="Add Prescription" onPress={addNewPrescription}></Button>
+      <Button
+        icon="check"
+        mode="contained"
+        color="#0000b3"
+        onPress={addNewPrescription}
+      >
+        Submit
+      </Button>
     </View>
   );
 }

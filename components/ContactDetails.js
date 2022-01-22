@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { View, Button, Text, FlatList } from "react-native";
+import { View, Text, FlatList, StyleSheet } from "react-native";
+import { Button } from "react-native-paper";
 
 //THE CONTACT DETAILS VIEW//
 /*
@@ -19,6 +20,17 @@ import { View, Button, Text, FlatList } from "react-native";
 function ContactDetails({ route, navigation }) {
   const id = route.params.id;
   const [contact, setContact] = useState([]);
+
+  const styles = StyleSheet.create({
+    button: {
+      marginBottom: 5,
+      padding: 5,
+    },
+    space: {
+      width: 20, // or whatever size you need
+      height: 20,
+    },
+  });
 
   useEffect(() => {
     fetch(`http://localhost:5000/contacts/${id}`)
@@ -71,9 +83,24 @@ function ContactDetails({ route, navigation }) {
           </Text>
         )}
       />
+      <Button
+        style={styles.button}
+        icon="account-edit-outline"
+        mode="contained"
+        color="#0000b3"
+      >
+        Edit
+      </Button>
 
-      <Button title="EDIT" />
-      <Button title="DELETE" onPress={handleDeleteContact} />
+      <Button
+        style={styles.button}
+        icon="delete-empty-outline"
+        mode="contained"
+        color="#0000b3"
+        onPress={handleDeleteContact}
+      >
+        Delete
+      </Button>
     </View>
   );
 }

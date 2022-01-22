@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Button, Text, TextInput, View } from "react-native";
+import { View } from "react-native";
 import DateField from "react-native-datefield";
-import BouncyCheckbox from "react-native-bouncy-checkbox";
+import { TextInput, Text, Checkbox, Button } from "react-native-paper";
 
 //ADD TO CALENDAR FUNCTIONALITY//
 /*
@@ -43,9 +43,10 @@ function AddToCalendarForm({ navigation }) {
 
   return (
     <View>
-      <Text>Appointment Type:</Text>
       <TextInput
-        placeholder="Add type"
+        mode="outlined"
+        activeOutlineColor="#3333ff"
+        label="Appointment Type"
         onChangeText={(text) => setType(text)}
       />
 
@@ -58,43 +59,44 @@ function AddToCalendarForm({ navigation }) {
         onSubmit={(value) => setDate(value)}
       />
 
-      <Text>Time</Text>
       <TextInput
-        placeholder="Add Time"
+        mode="outlined"
+        activeOutlineColor="#3333ff"
+        label="Time"
         onChangeText={(text) => setTime(text)}
       />
-      <Text>Location</Text>
       <TextInput
-        placeholder="Add Location"
+        mode="outlined"
+        activeOutlineColor="#3333ff"
+        label="Location"
         onChangeText={(text) => setLocation(text)}
       />
 
-      <BouncyCheckbox
-        size={15}
-        fillColor="blue"
-        unfillColor="#FFFFFF"
-        text="Labwork Necessary"
-        iconStyle={{ borderColor: "black" }}
-        textStyle={{
-          fontFamily: "Times New Roman",
-          color: "black",
-          textDecorationLine: "none",
+      <Checkbox.Item
+        label="Labwork"
+        position="leading"
+        color="#e6005c"
+        status={labwork ? "checked" : "unchecked"}
+        onPress={() => {
+          setLabwork(!labwork);
         }}
-        onPress={() =>
-          labwork === false ? setLabwork(true) : setLabwork(false)
-        }
       />
 
-      <Text>Additional Notes:</Text>
       <TextInput
-        placeholder="Add notes"
+        mode="outlined"
+        activeOutlineColor="#3333ff"
+        label="Additional Notes"
         onChangeText={(text) => setNotes(text)}
       />
 
       <Button
-        title="Submit New Appointment"
+        icon="check"
+        mode="contained"
+        color="#0000b3"
         onPress={addNewAppointment}
-      ></Button>
+      >
+        Submit
+      </Button>
     </View>
   );
 }

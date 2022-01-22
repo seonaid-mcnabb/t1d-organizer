@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState, useCallback } from "react";
-import { View, FlatList, Text, Button } from "react-native";
+import { View, FlatList, Text } from "react-native";
 import { Context1 } from "../App";
+import { Button } from "react-native-paper";
 
 //The Contact List//
 /* --Maps through context using React native Flatlist(currently, contacts database)
@@ -37,19 +38,29 @@ function ContactList({ navigation }) {
             {" "}
             {item.firstname} {item.lastname}{" "}
             <Button
-              title="details"
+              icon="magnify"
+              mode="contained"
+              color="#e6005c"
               onPress={() =>
                 navigation.navigate("Contact Details", { id: item.id })
               }
-            />{" "}
+            >
+              Details
+            </Button>{" "}
           </Text>
         )}
       />
 
       <Button
-        title="ADD NEW"
+        //style={styles.button}
+        icon="account-plus-outline"
+        mode="contained"
+        color="#0000b3"
         onPress={() => navigation.navigate("Add New Contact")}
-      ></Button>
+      >
+        {" "}
+        Add New Contact{" "}
+      </Button>
     </View>
   );
 }

@@ -40,7 +40,7 @@ function WelcomeScreen({ navigation }) {
         style={styles.button}
         icon="contacts"
         mode="contained"
-        color="blue"
+        color="#0000b3"
         onPress={() => navigation.navigate("Contacts")}
       >
         Contacts
@@ -50,7 +50,7 @@ function WelcomeScreen({ navigation }) {
         style={styles.button}
         icon="calendar"
         mode="contained"
-        color="blue"
+        color="#0000b3"
         onPress={() => navigation.navigate("Calendar")}
       >
         Calendar
@@ -60,7 +60,7 @@ function WelcomeScreen({ navigation }) {
         icon="calculator"
         style={styles.button}
         mode="contained"
-        color="blue"
+        color="#0000b3"
         onPress={() => navigation.navigate("Calculator")}
       >
         Calculator

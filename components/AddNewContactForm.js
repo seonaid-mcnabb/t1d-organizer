@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { ScrollView, Button, Text, TextInput, View } from "react-native";
+import { ScrollView, Text, View } from "react-native";
+import { TextInput } from "react-native-paper";
+import { Button } from "react-native-paper";
 
 //THE ADD NEW CONTACT FORM SHOULD:
 //Accept and record details of a new contact
@@ -40,34 +42,56 @@ function AddNewContactForm({ navigation }) {
   return (
     <ScrollView>
       <TextInput
-        placeholder="First Name"
+        mode="outlined"
+        activeOutlineColor="#3333ff"
+        label="First Name"
         onChangeText={(text) => setFirstname(text)}
       ></TextInput>
       <TextInput
-        placeholder="Last Name"
+        mode="outlined"
+        activeOutlineColor="#3333ff"
+        label="Last Name"
         onChangeText={(text) => setLastname(text)}
       ></TextInput>
       <TextInput
-        placeholder="Specialty"
+        mode="outlined"
+        activeOutlineColor="#3333ff"
+        label="Specialty"
         onChangeText={(text) => setSpecialty(text)}
       ></TextInput>
       <TextInput
-        placeholder="Phone Number"
+        mode="outlined"
+        activeOutlineColor="#3333ff"
+        label="Phone Number"
         onChangeText={(text) => setPhonenumber(text)}
       ></TextInput>
       <TextInput
-        placeholder="Email"
+        mode="outlined"
+        activeOutlineColor="#3333ff"
+        label="Email"
         onChangeText={(text) => setEmail(text)}
       ></TextInput>
       <TextInput
-        placeholder="Office Location"
+        mode="outlined"
+        activeOutlineColor="#3333ff"
+        label="Office Location"
         onChangeText={(text) => setOffice(text)}
       ></TextInput>
       <TextInput
-        placeholder="Notes"
+        mode="outlined"
+        activeOutlineColor="#3333ff"
+        label="Notes"
         onChangeText={(text) => setNotes(text)}
       ></TextInput>
-      <Button title="ADD" onPress={handleSubmit}></Button>
+
+      <Button
+        icon="check"
+        mode="contained"
+        color="#0000b3"
+        onPress={handleSubmit}
+      >
+        Submit
+      </Button>
     </ScrollView>
   );
 }
