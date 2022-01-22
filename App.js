@@ -14,6 +14,8 @@ import Calendar from "./components/Calendar";
 import AddNewContactForm from "./components/AddNewContactForm";
 import ContactDetails from "./components/ContactDetails";
 import TravelChecklist from "./components/TravelChecklist";
+import AddToCalendarForm from "./components/AddToCalendarForm";
+import AddNewPrescriptionForm from "./components/AddNewPrescriptionForm";
 
 //This is what is displayed on the home page (links to contacts, calendar, and calculator)
 function WelcomeScreen({ navigation }) {
@@ -78,6 +80,14 @@ function App({ navigation }) {
             <Stack.Screen name="Home" component={WelcomeScreen} />
             <Stack.Screen name="Contacts" component={ContactList} />
             <Stack.Screen name="Calendar" component={Calendar} />
+            <Stack.Screen
+              name="Add To Calendar"
+              component={AddToCalendarForm}
+            />
+            <Stack.Screen
+              name="Add New Prescription"
+              component={AddNewPrescriptionForm}
+            />
             <Stack.Screen name="Calculator" component={CalculatorInput} />
             <Stack.Screen
               name="Add New Contact"

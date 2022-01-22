@@ -6,7 +6,8 @@ var cors = require("cors");
 
 app.use(cors());
 
-//Added in these next lines to try to solve undefined object issue I was having with post method after running npm install --save body-parser
+//Added in these next lines to try to solve undefined object issue I was having with post method
+//after running npm install --save body-parser
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 app.use(
@@ -16,18 +17,18 @@ app.use(
 );
 //And it works!
 
-//What shows up when you cal the datbase for the first time
+//What shows up when you call the datbase for the first time
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
   next();
 });
 
-//--> CONTACT DATABASE ROUTES ARE HERE <--//
+//Response when database is
 app.get("/", (req, res) => {
   res.send("Welcome to the API");
 });
-
+//--> CONTACT DATABASE ROUTES ARE HERE <--//
 //This gets all of the contacts from the database
 app.get("/contacts", (req, res) => {
   db("select * from contacts;")
@@ -37,11 +38,6 @@ app.get("/contacts", (req, res) => {
 
 //This adds a new contact to the list
 app.post("/addcontact", (req, res) => {
-  console.log("***", req.body);
-  console.log(
-    "****",
-    `INSERT INTO contacts (firstname, lastname, specialty, phonenumber, email, officename, notes) VALUES ("${req.body.firstname}", "${req.body.lastname}", "${req.body.specialty}","${req.body.phonenumber}","${req.body.email}", "${req.body.officename}","${req.body.notes}");`
-  );
   db(
     `INSERT INTO contacts (firstname, lastname, specialty, phonenumber, email, officename, notes) VALUES ("${req.body.firstname}", "${req.body.lastname}", "${req.body.specialty}","${req.body.phonenumber}","${req.body.email}", "${req.body.officename}","${req.body.notes}");`
   )
@@ -55,7 +51,6 @@ app.post("/addcontact", (req, res) => {
 });
 
 //This gets a contact with a given id
-///MYSQL QUERY select * from contacts where id=("1");
 app.get("/contacts/:id", (req, res) => {
   db(`select * from contacts where id=("${req.params.id}");`)
     .then((results) => res.send(results.data))
@@ -71,6 +66,7 @@ app.delete("/contacts/:id", (req, res) => {
     });
 });
 
+//--> APPOINTMENT DATABASE ROUTES ARE HERE <--//
 //This gets all of the appointments from the database
 app.get("/appointments", (req, res) => {
   db("select * from appointments;")
@@ -100,6 +96,7 @@ app.delete("/appointments/:id", (req, res) => {
     });
 });
 
+//--> PRESCRIPTION / MATERIALS DATABASE ROUTES ARE HERE <--//
 //This gets all of the materials/prescriptions from the database
 app.get("/materials", (req, res) => {
   db("select * from materials;")
