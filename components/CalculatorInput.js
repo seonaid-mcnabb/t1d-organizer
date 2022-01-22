@@ -1,12 +1,15 @@
 import { React, useState } from "react";
-import { View, ScrollView, Button, TextInput, Text } from "react-native";
+import { ScrollView, Button, TextInput, Text } from "react-native";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
-import { Header } from "react-native-elements";
 
-//The calculator input form
-//Should take inputs like destination, duration of trip, insulin use per day, devices used
-//Have a button to return to home screen
-//Have a button to generate checklist
+//CALCULATOR INPUT FORM FUNCTIONALITY//
+/*--Renders a form with various possible inputs (currently only tailored to my personal treatments)
+--Sets states based on input
+--Contains logic within checkboxes to change from true / false onPress
+--Has a "generate checklist button"
+--The generate checklist button navigates to TravelChecklist.js
+--^^On navigate, the state paramaters are sent along to the checklist view
+ */
 
 function CalculatorInput({ navigation }) {
   const [abroad, setAbroad] = useState(false);

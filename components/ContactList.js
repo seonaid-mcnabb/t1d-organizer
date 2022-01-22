@@ -1,19 +1,19 @@
 import { React, useContext, useEffect, useState, useCallback } from "react";
-import { ScrollView, View, FlatList, Text, Button } from "react-native";
-import { ListItem, List } from "react-native-elements";
+import { View, FlatList, Text, Button } from "react-native";
 import { Context1 } from "../App";
 
-//The contact list should:
-//Map through contacts database and display names in alphabetical order
-//each name should have a "see more button" next to it
+//The Contact List//
+/* --Maps through context using React native Flatlist(currently, contacts database)
+--Displays each contact first and last name
+--Has a button to see contact details that navigates to ContactDetails.js component 
+--^^This button sends the contact's id as a parameter to ContactDetails component
+--Has a button to add new that navigates to AddNewContactForm.js component form
+*/
 
 function ContactList({ navigation }) {
+  //This gives ContactList access to the App context (contacts)
   const context = useContext(Context1);
-  //This and the useEffect below are currently redundant because they are on the context from app.js
-  //but I've added it here so that changes are reflected immediately when a contact is added or deleted
-  const [contacts, setContacts] = useState([]);
 
-  console.log(context);
   return (
     <View>
       <FlatList
@@ -36,11 +36,6 @@ function ContactList({ navigation }) {
         onPress={() => navigation.navigate("Add New Contact")}
       ></Button>
     </View>
-    //<View style={{ flex: 1 }}>
-    //<View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-    //<h1>Contacts List</h1>
-    //<Button title="ADD NEW" />
-    //</View>
   );
 }
 

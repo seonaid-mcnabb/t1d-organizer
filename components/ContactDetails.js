@@ -1,10 +1,20 @@
 import { React, useState, useEffect } from "react";
-import { View, ScrollView, Button, Text, FlatList } from "react-native";
-import { Context1 } from "../App";
+import { View, Button, Text, FlatList } from "react-native";
 
-//THE CONTACT DETAILS VIEW
-//Should display the selected contact's name at the top
-//Should include all completed information about the candidate (speciality) (phone number) (email)
+//THE CONTACT DETAILS VIEW//
+/*
+--Displays Contact Name & Details
+--How? It receives contact id from Contact List by first accepting route as parameter
+--And then declares the id variable as route.params.id (sent from contact list)
+--Then uses the id to fetch this particular contact and setContact with useEffect
+
+//DELETE BUTTON
+--Triggers the handleDeleteContact() function
+--Handle delete function fetches delete function from backend
+
+//EDIT BUTTON
+--Currently does not function
+*/
 
 function ContactDetails({ route, navigation }) {
   const id = route.params.id;
@@ -13,21 +23,17 @@ function ContactDetails({ route, navigation }) {
   useEffect(() => {
     fetch(`http://localhost:5000/contacts/${id}`)
       .then((res) => {
-        //
         if (res.ok) {
-          //if the response is received correctly
-          return res.json(); //return the response as a javascript object (this is what .json() does)
+          return res.json();
         } else {
           throw new Error("Not 2xx response");
         }
       })
       .then((json) => {
-        // upon success, update tasks
         setContact(json);
       })
       .catch((error) => {
         console.log(error);
-        // upon failure, show error message
       });
   }, []);
 
@@ -38,7 +44,7 @@ function ContactDetails({ route, navigation }) {
       .then((res) => {
         console.log(res);
         if (res.ok) {
-          return res.json(); //return the response as a javascript object (this is what .json() does)
+          return res.json();
         } else {
           throw new Error("Not 2xx response");
         }
@@ -49,7 +55,6 @@ function ContactDetails({ route, navigation }) {
       })
       .catch((error) => {
         console.log(error);
-        // upon failure, show error message
       });
   };
 

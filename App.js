@@ -1,23 +1,26 @@
+//Imports for funcionality, native components & styling
 import * as React from "react";
 import { useState, useEffect } from "react";
-import { View, Text, Button, FlatList } from "react-native";
+import { View, Button } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import {
   DefaultTheme as PaperDefaultTheme,
   Provider as PaperProvider,
 } from "react-native-paper";
-//Components currently used in StackNavigator
+
+//Components used in the Stack Navigatior
 import ContactList from "./components/ContactList";
-import CalculatorInput from "./components/CalculatorInput";
-import Calendar from "./components/Calendar";
 import AddNewContactForm from "./components/AddNewContactForm";
 import ContactDetails from "./components/ContactDetails";
-import TravelChecklist from "./components/TravelChecklist";
+import Calendar from "./components/Calendar";
 import AddToCalendarForm from "./components/AddToCalendarForm";
 import AddNewPrescriptionForm from "./components/AddNewPrescriptionForm";
+import CalculatorInput from "./components/CalculatorInput";
+import TravelChecklist from "./components/TravelChecklist";
 
-//This is what is displayed on the home page (links to contacts, calendar, and calculator)
+//The Welcome Screen is what the user sees first
+//Props: Navigation, to enable user flow using React Navigation (explained below)
 function WelcomeScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
@@ -39,39 +42,50 @@ function WelcomeScreen({ navigation }) {
   );
 }
 
-//creates the stack navigation
+//Before going into App function, stack variable is declared and StackNavigator created
 const Stack = createNativeStackNavigator();
 
-//Creates context 1
+//A context is exported, called Context1
+//The components in the stack navigator are wrapped in the context
+//All of the data declared/fetched in this context will be available to the components without
+//having to pass props
+//(This actually was not necessary but I think it's cool and don't want to forget how to use it)
 export const Context1 = React.createContext(null);
 
-//This contains the stack navigator
-function App({ navigation }) {
+//App grabs all of the contacts from the backend and sets them
+//Because of context, they will be available throughout the app
+//In the return function, it contains the stack navigator
+function App() {
   const [contacts, setContacts] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:5000/contacts")
       .then((res) => {
-        //
         if (res.ok) {
-          //if the response is received correctly
           console.log(res);
-          return res.json(); //return the response as a javascript object (this is what .json() does)
+          return res.json();
         } else {
           throw new Error("Not 2xx response");
         }
       })
       .then((json) => {
-        // upon success, update tasks
         setContacts(json);
         console.log(json);
       })
       .catch((error) => {
         console.log(error);
-        // upon failure, show error message
       });
   }, []);
 
+  //Stack Navigator Below//
+  /*
+  --Contained in a Navigation Container
+  --Wrapped in Context
+  --Wrapped in Stack.Navigator
+  --Each of the screens to be contained in this navigator is named, and linked to its component
+  --You can navigate between screens anywhere in the app by declaring {navigation} as parameter in component
+  --Then navigation.navigation("SCREEN-NAME")
+  */
   return (
     <PaperProvider theme={PaperDefaultTheme}>
       <NavigationContainer>
@@ -79,6 +93,11 @@ function App({ navigation }) {
           <Stack.Navigator>
             <Stack.Screen name="Home" component={WelcomeScreen} />
             <Stack.Screen name="Contacts" component={ContactList} />
+            <Stack.Screen
+              name="Add New Contact"
+              component={AddNewContactForm}
+            />
+            <Stack.Screen name="Contact Details" component={ContactDetails} />
             <Stack.Screen name="Calendar" component={Calendar} />
             <Stack.Screen
               name="Add To Calendar"
@@ -89,11 +108,6 @@ function App({ navigation }) {
               component={AddNewPrescriptionForm}
             />
             <Stack.Screen name="Calculator" component={CalculatorInput} />
-            <Stack.Screen
-              name="Add New Contact"
-              component={AddNewContactForm}
-            />
-            <Stack.Screen name="Contact Details" component={ContactDetails} />
             <Stack.Screen name="Travel Checklist" component={TravelChecklist} />
           </Stack.Navigator>
         </Context1.Provider>

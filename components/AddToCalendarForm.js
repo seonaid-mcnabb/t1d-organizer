@@ -1,7 +1,15 @@
 import { React, useState } from "react";
-import { ScrollView, Button, Text, TextInput, View } from "react-native";
+import { Button, Text, TextInput, View } from "react-native";
 import DateField from "react-native-datefield";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
+
+//ADD TO CALENDAR FUNCTIONALITY//
+/*
+--Renders an input form
+--Records states (corresponds to backend)
+--Sends the states to the backend in a post request when addNewAppointment function is triggered by submit button
+--Navigates back to the Calendar View when appointment has been added
+*/
 
 function AddToCalendarForm({ navigation }) {
   const [type, setType] = useState("");
@@ -26,8 +34,8 @@ function AddToCalendarForm({ navigation }) {
         notes: notes,
       }),
     })
-      .then((res) => res.json()) //First transform the JSON to a Javascript object
-      .then((json) => console.log(json)) // Then print the JSON
+      .then((res) => res.json())
+      .then((json) => navigation.navigate("Calendar"))
       .catch((error) => {
         console.log(error);
       });

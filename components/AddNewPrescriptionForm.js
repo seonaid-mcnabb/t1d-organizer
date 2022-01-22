@@ -1,7 +1,14 @@
 import { React, useState } from "react";
-import { ScrollView, Button, Text, TextInput, View } from "react-native";
+import { Button, Text, TextInput, View } from "react-native";
 import DateField from "react-native-datefield";
-import BouncyCheckbox from "react-native-bouncy-checkbox";
+
+//ADD NEW PRESCRIPTION FUNCTIONALITY//
+/*
+--Renders an input form
+--Records states (corresponds to backend)
+--Sends the states to the backend in a post request when addNewPrescription function is triggered by submit button
+--Navigates back to the Calendar View when prescription has been added
+*/
 
 function AddNewPrescriptionForm({ navigation }) {
   const [medname, setMedname] = useState("");
@@ -24,8 +31,8 @@ function AddNewPrescriptionForm({ navigation }) {
         notes: notes,
       }),
     })
-      .then((res) => res.json()) //First transform the JSON to a Javascript object
-      .then((json) => console.log(json)) // Then print the JSON
+      .then((res) => res.json())
+      .then((json) => navigation.navigate("Calendar"))
       .catch((error) => {
         console.log(error);
       });

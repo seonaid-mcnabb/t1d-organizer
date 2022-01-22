@@ -1,13 +1,17 @@
 import React from "react";
-import { ScrollView, View, Button, Text } from "react-native";
+import { ScrollView, Button, Text } from "react-native";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 
-//The travel checklist should
-//Have a button to go back to input form
-//Be interactive (each item will have a checkbox to mark as packed)
-//Be divided into sections based on device / need
-//the "ready to go" button should only be clickable when all items have been checked off
-//once clicked, a complete list of the items packed should be sent to the user
+//TRAVEL CHECKLIST FUNCTIONALIT//
+/*--Accepts route as parameter
+--Through route, accepts all of the states sent by CalculatorInput.js
+--Generates checkboxes
+--Some items are default (must be brought, regardless of choices on CalculatorInput)
+--Other checkboxes contain logic to determine quantity of items needed based on duration / destination
+--If there is logic involved, it's written before checkbox is rendered--so item only rendered if necessary
+
+--Currently: cannot save checklist anywhere (would be ideal to come back and work on later)
+ */
 
 function TravelChecklist({ route }) {
   const {

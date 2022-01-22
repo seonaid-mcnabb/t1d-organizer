@@ -14,17 +14,6 @@ function AddNewContactForm({ navigation }) {
   const [office, setOffice] = useState("");
   const [notes, setNotes] = useState("");
 
-  /*
-    fetch("http://localhost:5000/addcontact", {
-      firstname: {firstname},
-        lastname: {lastname},
-        specialty: {specialty},
-        phonenumber: {phonenumber},
-        email: {email},
-        officename: {office},
-        notes: {notes}
-*/
-
   const handleSubmit = () => {
     fetch("http://localhost:5000/addcontact", {
       method: "POST",
@@ -42,7 +31,7 @@ function AddNewContactForm({ navigation }) {
       }),
     })
       .then((res) => res.json()) //First transform the JSON to a Javascript object
-      .then((json) => console.log(json)) // Then print the JSON
+      .then((json) => navigation.navigate("Contacts")) // Then print the JSON
       .catch((error) => {
         console.log(error);
       });
