@@ -1,11 +1,12 @@
 //Imports for funcionality, native components & styling
 import * as React from "react";
 import { useState, useEffect } from "react";
-import { View, Button } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import {
-  DefaultTheme as PaperDefaultTheme,
+  Button,
+  DefaultTheme,
   Provider as PaperProvider,
 } from "react-native-paper";
 
@@ -16,28 +17,54 @@ import ContactDetails from "./components/ContactDetails";
 import Calendar from "./components/Calendar";
 import AddToCalendarForm from "./components/AddToCalendarForm";
 import AddNewPrescriptionForm from "./components/AddNewPrescriptionForm";
+import ApptsPrescriptionsListView from "./components/ApptsPrescriptionsListView";
 import CalculatorInput from "./components/CalculatorInput";
 import TravelChecklist from "./components/TravelChecklist";
 
 //The Welcome Screen is what the user sees first
 //Props: Navigation, to enable user flow using React Navigation (explained below)
 function WelcomeScreen({ navigation }) {
+  const styles = StyleSheet.create({
+    button: {
+      marginBottom: 5,
+      padding: 10,
+    },
+    space: {
+      width: 20, // or whatever size you need
+      height: 20,
+    },
+  });
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Button
-        title="CONTACTS"
+        style={styles.button}
+        icon="contacts"
+        mode="contained"
+        color="blue"
         onPress={() => navigation.navigate("Contacts")}
-      />
+      >
+        Contacts
+      </Button>
 
       <Button
-        title="CALENDAR"
+        style={styles.button}
+        icon="calendar"
+        mode="contained"
+        color="blue"
         onPress={() => navigation.navigate("Calendar")}
-      />
+      >
+        Calendar
+      </Button>
 
       <Button
-        title="CALCULATOR"
+        icon="calculator"
+        style={styles.button}
+        mode="contained"
+        color="blue"
         onPress={() => navigation.navigate("Calculator")}
-      />
+      >
+        Calculator
+      </Button>
     </View>
   );
 }
@@ -87,7 +114,7 @@ function App() {
   --Then navigation.navigation("SCREEN-NAME")
   */
   return (
-    <PaperProvider theme={PaperDefaultTheme}>
+    <PaperProvider>
       <NavigationContainer>
         <Context1.Provider value={contacts}>
           <Stack.Navigator>
@@ -106,6 +133,10 @@ function App() {
             <Stack.Screen
               name="Add New Prescription"
               component={AddNewPrescriptionForm}
+            />
+            <Stack.Screen
+              name="App and Prescriptions List View"
+              component={ApptsPrescriptionsListView}
             />
             <Stack.Screen name="Calculator" component={CalculatorInput} />
             <Stack.Screen name="Travel Checklist" component={TravelChecklist} />

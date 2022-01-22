@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import React, { useState } from "react";
 import { ScrollView, Button, Text, TextInput, View } from "react-native";
 
 //THE ADD NEW CONTACT FORM SHOULD:

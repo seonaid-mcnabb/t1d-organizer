@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import React, { useState } from "react";
 import { Button, Text, TextInput, View } from "react-native";
 import DateField from "react-native-datefield";
 

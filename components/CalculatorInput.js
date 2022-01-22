@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import React, { useState } from "react";
 import { ScrollView, Button, TextInput, Text } from "react-native";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 

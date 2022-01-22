@@ -1,4 +1,4 @@
-import { React, useContext, useEffect, useState, useCallback } from "react";
+import React, { useContext, useEffect, useState, useCallback } from "react";
 import { View, FlatList, Text, Button } from "react-native";
 import { Context1 } from "../App";
 
@@ -13,6 +13,20 @@ import { Context1 } from "../App";
 function ContactList({ navigation }) {
   //This gives ContactList access to the App context (contacts)
   const context = useContext(Context1);
+
+  const data = [
+    { value: "Lillie-Mai Allen", key: "lCUTs2" },
+    { value: "Emmanuel Goldstein", key: "TXdL0c" },
+    { value: "Winston Smith", key: "zqsiEw" },
+    { value: "William Blazkowicz", key: "psg2PM" },
+    { value: "Gordon Comstock", key: "1K6I18" },
+    { value: "Philip Ravelston", key: "NVHSkA" },
+    { value: "Rosemary Waterlow", key: "SaHqyG" },
+    { value: "Julia Comstock", key: "iaT1Ex" },
+    { value: "Mihai Maldonado", key: "OvMd5e" },
+    { value: "Murtaza Molina", key: "25zqAO" },
+    { value: "Peter Petigrew", key: "8cWuu3" },
+  ];
 
   return (
     <View>
@@ -31,6 +45,7 @@ function ContactList({ navigation }) {
           </Text>
         )}
       />
+
       <Button
         title="ADD NEW"
         onPress={() => navigation.navigate("Add New Contact")}
