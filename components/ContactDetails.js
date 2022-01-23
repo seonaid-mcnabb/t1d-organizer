@@ -15,7 +15,7 @@ import { Context1 } from "../App";
 --Handle delete function fetches delete function from backend
 
 //EDIT BUTTON
---Currently does not function
+--Currently does not function, it would be nice if it did
 */
 
 function ContactDetails({ route, navigation }) {

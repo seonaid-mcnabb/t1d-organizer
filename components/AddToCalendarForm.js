@@ -10,7 +10,7 @@ import { Context1 } from "../App";
 --Renders an input form
 --Records states (corresponds to backend)
 --Sends the states to the backend in a post request when addNewAppointment function is triggered by submit button
---Navigates back to the Calendar View when appointment has been added
+--Navigates back to the Calendar View when appointment has been added and updates context so data is reflected
 */
 
 function AddToCalendarForm({ navigation }) {

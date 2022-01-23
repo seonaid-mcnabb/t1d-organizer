@@ -9,7 +9,7 @@ import { Context1 } from "../App";
 --Renders an input form
 --Records states (corresponds to backend)
 --Sends the states to the backend in a post request when addNewPrescription function is triggered by submit button
---Navigates back to the Calendar View when prescription has been added
+--Navigates back to the Calendar View when prescription has been added and updates context with new value
 */
 
 function AddNewPrescriptionForm({ navigation }) {
@@ -83,7 +83,7 @@ function AddNewPrescriptionForm({ navigation }) {
     })
       .then((res) => res.json())
       .then((json) => {
-        context.setMaterials(json);
+        context.setMaterials(json); //where context is updated to reflect new item
         navigation.navigate("Calendar");
       })
       .catch((error) => {

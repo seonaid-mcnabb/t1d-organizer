@@ -5,8 +5,9 @@ import { Button, Title } from "react-native-paper";
 import { Context1 } from "../App";
 
 //THE ADD NEW CONTACT FORM SHOULD:
-//Accept and record details of a new contact
+//Accepts and record details of a new contact
 //Add the contact and details to the contacts database upon submit
+//Updates the contacts state through context so that data is displayed immediately
 
 function AddNewContactForm({ navigation }) {
   const [firstname, setFirstname] = useState("");
@@ -38,7 +39,7 @@ function AddNewContactForm({ navigation }) {
       .then((res) => res.json()) //First transform the JSON to a Javascript object
       .then((json) => {
         console.log(json);
-        context.setContacts(json);
+        context.setContacts(json); //here is where whole app context is updated
         navigation.navigate("Contacts");
       })
       .catch((error) => {

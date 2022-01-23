@@ -4,6 +4,15 @@ import { View, ScrollView, FlatList, Text, StyleSheet } from "react-native";
 import { Title } from "react-native-paper";
 import { Context1 } from "../App";
 
+/*THE PRESCRIPTION AND APPT VIEW LIST */
+/*--I don't actually know if I want to keep this component
+--I like a list view of the appointments but it's currently not very interactive / useful 
+--There are two FlatLists here
+--One goes through appointments (provided by context)
+--The other one goes through materials(provided by context)
+--Both show the date above and some details about the appointment or prescription/materials
+*/
+
 function ApptsPrescriptionsListView() {
   const context = useContext(Context1);
 
@@ -48,11 +57,12 @@ function ApptsPrescriptionsListView() {
     },
   });
 
-  //this sorts the appointments array in ascending order
+  //this sorts the appointments array in ascending order by date
   let upcomingAppointments = context.appointments.sort(function (a, b) {
     return a.date.localeCompare(b.date);
   });
 
+  //sorts the prescription/materials array in ascending order by date
   let prescriptionHistory = context.materials.sort(function (a, b) {
     return a.datereceived.localeCompare(b.datereceived);
   });
@@ -108,26 +118,5 @@ function ApptsPrescriptionsListView() {
     </ScrollView>
   );
 }
-
-/*//Little snippets
-//This extracts the date format yyyy-mm-dd
-      <Text>{appointments[0].date.substring(0, 10).toString()}</Text>
-
-*/
-/*
-<FlatList
-        data={appointments}
-        renderItem={({ item }) => (
-          <Text>
-            {item.date}
-            {item.type}
-            {item.time}
-            {item.location}
-            {item.labwork}
-            {item.notes}
-          </Text>
-        )}
-      />
-*/
 
 export default ApptsPrescriptionsListView;

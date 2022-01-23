@@ -7,6 +7,11 @@ import { Context1 } from "../App";
 //CALENDAR VIEW//
 /* 
 --Uses react-native-calendars library to display calendar view
+--I am currently still trying to figure out how to make this work 
+--I want: added appointments or prescriptions to displayed visually
+--Push notifications to be set up when an appointment or prescription renewal is set up
+--The <Calendar> element currently in the turn portion is mostly just copy/past from react-native-calendars
+--but it's non-functional because I didn't have time to figure it out
 
 //BUTTONS//
 --Accepts navigation as parameter so it can:
@@ -25,7 +30,7 @@ function CalendarView({ navigation }) {
       padding: 10,
     },
     space: {
-      width: 20, // or whatever size you need
+      width: 20,
       height: 20,
     },
   });

@@ -4,6 +4,9 @@ import { useState, useEffect } from "react";
 import { View, StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+//I imported this but did not actually figure out how to manipulate the whole APP with PaperProvider
+//I did styling individually on components
 import {
   Button,
   DefaultTheme,
@@ -24,13 +27,14 @@ import TravelChecklist from "./components/TravelChecklist";
 //The Welcome Screen is what the user sees first
 //Props: Navigation, to enable user flow using React Navigation (explained below)
 function WelcomeScreen({ navigation }) {
+  //Styling to space buttons on homescreen
   const styles = StyleSheet.create({
     button: {
       marginBottom: 5,
       padding: 10,
     },
     space: {
-      width: 20, // or whatever size you need
+      width: 20,
       height: 20,
     },
   });
@@ -72,22 +76,25 @@ function WelcomeScreen({ navigation }) {
 //Before going into App function, stack variable is declared and StackNavigator created
 const Stack = createNativeStackNavigator();
 
-//A context is exported, called Context1
-//The components in the stack navigator are wrapped in the context
-//All of the data declared/fetched in this context will be available to the components without
-//having to pass props
-//(This actually was not necessary but I think it's cool and don't want to forget how to use it)
+/*ABOUT CONTEXT*/
+/*--A context is created and exported through React
+--All of the data declared / fetched in this context (in this case, APP.JS), will be available to all components
+
+--Declare data you'd like to pass before app return area
+--Wrap the return Stack Navigator in the context you created
+--Add values to the Context.Provider-- the values declared here will be available throughout the app 
+--They can be data, functions, etc.
+*/
 export const Context1 = React.createContext(null);
 
-//App grabs all of the contacts from the backend and sets them
-//Because of context, they will be available throughout the app
-//In the return function, it contains the stack navigator
 function App() {
+  //I want to be able to access the data obtained for appts., materials,
+  //and contacts throughout the app, so I declare them all here
   const [contacts, setContacts] = useState([]);
   const [appointments, setAppointments] = useState([]);
   const [materials, setMaterials] = useState([]);
 
-  //This grabs all the contacts and can be used through the app if context provided
+  //This grabs all the contacts from database and sets state
   useEffect(() => {
     fetch("http://localhost:5000/contacts")
       .then((res) => {
@@ -107,7 +114,7 @@ function App() {
       });
   }, []);
 
-  //This grabs all the appointments and can be used througout the app if context provided
+  //This grabs all the appointments from database and sets state
   useEffect(() => {
     fetch("http://localhost:5000/appointments")
       .then((res) => {
@@ -127,7 +134,7 @@ function App() {
       });
   }, []);
 
-  //Grabs all materials from backend and sets state
+  //This grabs all the materials from database and sets state
   useEffect(() => {
     fetch("http://localhost:5000/materials")
       .then((res) => {
@@ -154,7 +161,7 @@ function App() {
   --Wrapped in Stack.Navigator
   --Each of the screens to be contained in this navigator is named, and linked to its component
   --You can navigate between screens anywhere in the app by declaring {navigation} as parameter in component
-  --Then navigation.navigation("SCREEN-NAME")
+  --Then addiding onPress function with navigation.navigation("SCREEN-NAME-OF-YOUR-CHOICE")
   */
   return (
     <PaperProvider>
