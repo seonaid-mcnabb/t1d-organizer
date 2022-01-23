@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, FlatList, StyleSheet, SectionList } from "react-native";
-import { Button, List } from "react-native-paper";
+import {
+  View,
+  Text,
+  FlatList,
+  StyleSheet,
+  SectionList,
+  InteractionManager,
+} from "react-native";
+import { Button, List, Title } from "react-native-paper";
 
 //THE CONTACT DETAILS VIEW//
 /*
@@ -22,34 +29,34 @@ function ContactDetails({ route, navigation }) {
   const [contact, setContact] = useState([]);
 
   const styles = StyleSheet.create({
+    title: {
+      fontWeight: "normal",
+      color: "#00004d",
+      textDecorationLine: "underline",
+    },
+    name: {
+      fontSize: 40,
+      lineHeight: 40,
+      fontFamily: "sans-serif",
+      fontWeight: "normal",
+      paddingBottom: 20,
+    },
+    row: {
+      flex: 1,
+      paddingVertical: 25,
+      paddingHorizontal: 15,
+      flexDirection: "row",
+      justifyContent: "space-between",
+      borderBottomWidth: 1,
+      borderBottomColor: "white",
+    },
     button: {
       marginBottom: 5,
-      padding: 5,
+      padding: 10,
     },
     space: {
       width: 20, // or whatever size you need
       height: 20,
-    },
-  });
-
-  const listStyle = StyleSheet.create({
-    container: {
-      flex: 1,
-      paddingTop: 22,
-    },
-    sectionHeader: {
-      paddingTop: 2,
-      paddingLeft: 10,
-      paddingRight: 10,
-      paddingBottom: 2,
-      fontSize: 14,
-      fontWeight: "bold",
-      backgroundColor: "rgba(247,247,247,1.0)",
-    },
-    item: {
-      padding: 10,
-      fontSize: 18,
-      height: 44,
     },
   });
 
@@ -96,12 +103,23 @@ function ContactDetails({ route, navigation }) {
       <FlatList
         data={contact}
         renderItem={({ item }) => (
-          <Text>
-            {" "}
-            Name: {item.firstname} {item.lastname}
-            Specialty: {item.specialty}
-            Notes:{item.notes}
-          </Text>
+          <View style={styles.row}>
+            <Text>
+              <Text style={styles.name}>
+                {item.firstname} {item.lastname}
+              </Text>
+              {"\n"} {"\n"} <Title style={styles.title}>specialty</Title> {"\n"}{" "}
+              {item.specialty}
+              {"\n"} <Title style={styles.title}>phone #</Title> {"\n"}
+              <Text> {item.phonenumber} </Text>
+              {"\n"} <Title style={styles.title}>e-mail</Title> {"\n"}{" "}
+              {item.email}
+              {"\n"} <Title style={styles.title}>office location</Title> {"\n"}
+              {item.officename}
+              {"\n"} <Title style={styles.title}>additional notes</Title> {"\n"}{" "}
+              {item.notes}
+            </Text>
+          </View>
         )}
       />
 
