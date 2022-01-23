@@ -1,13 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
-import {
-  View,
-  Text,
-  FlatList,
-  StyleSheet,
-  SectionList,
-  InteractionManager,
-} from "react-native";
-import { Button, List, Title } from "react-native-paper";
+import { View, Text, FlatList, StyleSheet } from "react-native";
+import { Button, Title } from "react-native-paper";
 import { Context1 } from "../App";
 
 //THE CONTACT DETAILS VIEW//

@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { ScrollView, Text, View } from "react-native";
 import { TextInput } from "react-native-paper";
 import { Button, Title } from "react-native-paper";
+import { Context1 } from "../App";
 
 //THE ADD NEW CONTACT FORM SHOULD:
 //Accept and record details of a new contact
@@ -15,6 +16,8 @@ function AddNewContactForm({ navigation }) {
   const [email, setEmail] = useState("");
   const [office, setOffice] = useState("");
   const [notes, setNotes] = useState("");
+
+  const context = useContext(Context1);
 
   const handleSubmit = () => {
     fetch("http://localhost:5000/addcontact", {
@@ -33,7 +36,11 @@ function AddNewContactForm({ navigation }) {
       }),
     })
       .then((res) => res.json()) //First transform the JSON to a Javascript object
-      .then((json) => navigation.navigate("Contacts")) // Then print the JSON
+      .then((json) => {
+        console.log(json);
+        context.setContacts(json);
+        navigation.navigate("Contacts");
+      })
       .catch((error) => {
         console.log(error);
       });
