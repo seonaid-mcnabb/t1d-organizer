@@ -145,13 +145,10 @@ function CalendarView({ navigation }) {
         mode="contained"
         color="#0000b3"
         onPress={() =>
-          navigation.navigate(
-            "App and Prescriptions List View",
-            {
-              appointments: appointments,
-            },
-            { materials: materials }
-          )
+          navigation.navigate("App and Prescriptions List View", {
+            appointments: appointments,
+            materials: materials,
+          })
         }
       >
         View Upcoming Appointments and Prescription Renewals
