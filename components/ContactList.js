@@ -16,8 +16,24 @@ function ContactList({ navigation }) {
   const context = useContext(Context1);
 
   const styles = StyleSheet.create({
+    name: {
+      fontSize: 20,
+      lineHeight: 20,
+      fontFamily: "sans-serif",
+      fontWeight: "normal",
+      paddingBottom: 20,
+    },
+    seemorebutton: {
+      marginBottom: 0,
+      paddingBottom: 0,
+      fontFamily: "sans-serif",
+      fontWeight: "normal",
+      fontSize: 12,
+      paddingBottom: 0,
+    },
     button: {
       marginBottom: 10,
+      marginTop: 14,
       padding: 3,
     },
     space: {
@@ -27,27 +43,30 @@ function ContactList({ navigation }) {
   });
 
   return (
-    <View style={{ alignItems: "center" }}>
+    <View style={{ alignItems: "left" }}>
       <FlatList
         data={context}
         renderItem={({ item }) => (
-          <Text>
+          <Text style={styles.name}>
             {" "}
             {item.firstname} {item.lastname}{" "}
             <Button
-              style={styles.button}
+              style={styles.seemorebutton}
               icon="magnify"
               mode="contained"
-              color="#e6005c"
+              color="#ccd9ff"
               onPress={() =>
                 navigation.navigate("Contact Details", { id: item.id })
               }
-            ></Button>{" "}
+            >
+              details
+            </Button>{" "}
           </Text>
         )}
       />
 
       <Button
+        style={styles.button}
         icon="account-plus-outline"
         mode="contained"
         color="#0000b3"
