@@ -32,8 +32,8 @@ function AddToCalendarForm({ navigation }) {
       marginTop: 5,
     },
     text: {
-      fontSize: 15,
-      lineHeight: 15,
+      fontSize: 20,
+      lineHeight: 20,
       fontFamily: "sans-serif",
       fontWeight: "normal",
       color: "black",

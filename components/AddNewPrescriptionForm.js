@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, View } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 import DateField from "react-native-datefield";
 import { TextInput, Button } from "react-native-paper";
 
@@ -17,6 +17,52 @@ function AddNewPrescriptionForm({ navigation }) {
   const [duration, setDuration] = useState("");
   const [ordermethod, setOrdermethod] = useState("");
   const [notes, setNotes] = useState("");
+
+  const styles = StyleSheet.create({
+    headings: {
+      fontSize: 18,
+      lineHeight: 18,
+      fontFamily: "sans-serif",
+      fontWeight: "normal",
+      color: "#00004d",
+      marginBottom: 8,
+      marginLeft: 5,
+      marginTop: 5,
+    },
+    text: {
+      fontSize: 20,
+      lineHeight: 20,
+      fontFamily: "sans-serif",
+      fontWeight: "normal",
+      color: "black",
+      marginBottom: 5,
+      borderTopColor: "black",
+      textDecorationLine: "none",
+    },
+    headings: {
+      fontSize: 18,
+      lineHeight: 18,
+      fontFamily: "sans-serif",
+      fontWeight: "normal",
+      color: "#00004d",
+      marginBottom: 8,
+      marginLeft: 5,
+      marginTop: 5,
+    },
+    checkbox: {
+      borderColor: "grey",
+      borderWidth: 1.5,
+      borderRadius: 3,
+      marginTop: 5,
+      marginBottom: 5,
+      marginLeft: 20,
+    },
+    button: {
+      marginBottom: 5,
+      marginTop: 10,
+      padding: 10,
+    },
+  });
 
   const addNewPrescription = () => {
     fetch("http://localhost:5000/addmaterial", {
@@ -41,20 +87,21 @@ function AddNewPrescriptionForm({ navigation }) {
 
   return (
     <View>
+      <Text style={styles.headings}>Date Received:</Text>
+      <DateField
+        labelDate="Input day"
+        labelMonth="Input month"
+        labelYear="Input year"
+        styleInput={styles.text}
+        onSubmit={(value) => setDatereceived(value)}
+      />
+
+      <Text style={styles.headings}>Additional Information:</Text>
       <TextInput
         mode="outlined"
         activeOutlineColor="#0000b3"
         label="Medication or Supply"
         onChangeText={(text) => setMedname(text)}
-      />
-
-      <Text>Date Received:</Text>
-      <DateField
-        labelDate="Input day"
-        labelMonth="Input month"
-        labelYear="Input year"
-        //styleInput={styles.inputBorder}
-        onSubmit={(value) => setDatereceived(value)}
       />
 
       <TextInput
@@ -71,7 +118,6 @@ function AddNewPrescriptionForm({ navigation }) {
         onChangeText={(text) => setOrdermethod(text)}
       />
 
-      <Text>Notes:</Text>
       <TextInput
         mode="outlined"
         activeOutlineColor="#0000b3"
@@ -79,6 +125,7 @@ function AddNewPrescriptionForm({ navigation }) {
         onChangeText={(text) => setNotes(text)}
       />
       <Button
+        style={styles.button}
         icon="check"
         mode="contained"
         color="#0000b3"
