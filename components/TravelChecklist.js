@@ -35,6 +35,7 @@ function TravelChecklist({ route }) {
       textDecorationLine: "underline",
       marginBottom: 10,
       marginTop: 10,
+      marginLeft: 5,
     },
     headings: {
       fontSize: 18,
@@ -43,6 +44,7 @@ function TravelChecklist({ route }) {
       fontWeight: "normal",
       color: "#00004d",
       marginBottom: 8,
+      marginLeft: 5,
     },
     text: {
       fontSize: 15,
@@ -61,6 +63,7 @@ function TravelChecklist({ route }) {
     },
     button: {
       marginBottom: 5,
+      marginTop: 10,
       padding: 10,
     },
     space: {
