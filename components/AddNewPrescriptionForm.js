@@ -43,7 +43,7 @@ function AddNewPrescriptionForm({ navigation }) {
     <View>
       <TextInput
         mode="outlined"
-        activeOutlineColor="#3333ff"
+        activeOutlineColor="#0000b3"
         label="Medication or Supply"
         onChangeText={(text) => setMedname(text)}
       />
@@ -59,14 +59,14 @@ function AddNewPrescriptionForm({ navigation }) {
 
       <TextInput
         mode="outlined"
-        activeOutlineColor="#3333ff"
+        activeOutlineColor="#0000b3"
         label="Duration"
         onChangeText={(text) => setDuration(text)}
       />
 
       <TextInput
         mode="outlined"
-        activeOutlineColor="#3333ff"
+        activeOutlineColor="#0000b3"
         label="Order Method"
         onChangeText={(text) => setOrdermethod(text)}
       />
@@ -74,7 +74,7 @@ function AddNewPrescriptionForm({ navigation }) {
       <Text>Notes:</Text>
       <TextInput
         mode="outlined"
-        activeOutlineColor="#3333ff"
+        activeOutlineColor="#0000b3"
         label="Notes"
         onChangeText={(text) => setNotes(text)}
       />

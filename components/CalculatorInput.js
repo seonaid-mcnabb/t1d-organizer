@@ -46,16 +46,18 @@ function CalculatorInput({ navigation }) {
 
       <Text> Insulin use per day: </Text>
       <TextInput
+        keyboardType="numeric"
         mode="outlined"
-        activeOutlineColor="#3333ff"
+        activeOutlineColor="#0000b3"
         placeholder="enter units"
         onChangeText={(text) => setInsulinUse(text)}
       ></TextInput>
 
       <Text>How long will you be away?</Text>
       <TextInput
+        keyboardType="numeric"
         mode="outlined"
-        activeOutlineColor="#3333ff"
+        activeOutlineColor="#0000b3"
         placeholder="enter days"
         onChangeText={(text) => setDuration(text)}
       ></TextInput>

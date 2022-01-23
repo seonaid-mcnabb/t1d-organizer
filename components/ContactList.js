@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, useCallback } from "react";
-import { View, FlatList, Text } from "react-native";
+import { View, FlatList, Text, StyleSheet } from "react-native";
 import { Context1 } from "../App";
 import { Button } from "react-native-paper";
 
@@ -15,22 +15,19 @@ function ContactList({ navigation }) {
   //This gives ContactList access to the App context (contacts)
   const context = useContext(Context1);
 
-  const data = [
-    { value: "Lillie-Mai Allen", key: "lCUTs2" },
-    { value: "Emmanuel Goldstein", key: "TXdL0c" },
-    { value: "Winston Smith", key: "zqsiEw" },
-    { value: "William Blazkowicz", key: "psg2PM" },
-    { value: "Gordon Comstock", key: "1K6I18" },
-    { value: "Philip Ravelston", key: "NVHSkA" },
-    { value: "Rosemary Waterlow", key: "SaHqyG" },
-    { value: "Julia Comstock", key: "iaT1Ex" },
-    { value: "Mihai Maldonado", key: "OvMd5e" },
-    { value: "Murtaza Molina", key: "25zqAO" },
-    { value: "Peter Petigrew", key: "8cWuu3" },
-  ];
+  const styles = StyleSheet.create({
+    button: {
+      marginBottom: 10,
+      padding: 3,
+    },
+    space: {
+      width: 20, // or whatever size you need
+      height: 20,
+    },
+  });
 
   return (
-    <View>
+    <View style={{ alignItems: "center" }}>
       <FlatList
         data={context}
         renderItem={({ item }) => (
@@ -38,21 +35,19 @@ function ContactList({ navigation }) {
             {" "}
             {item.firstname} {item.lastname}{" "}
             <Button
+              style={styles.button}
               icon="magnify"
               mode="contained"
               color="#e6005c"
               onPress={() =>
                 navigation.navigate("Contact Details", { id: item.id })
               }
-            >
-              Details
-            </Button>{" "}
+            ></Button>{" "}
           </Text>
         )}
       />
 
       <Button
-        //style={styles.button}
         icon="account-plus-outline"
         mode="contained"
         color="#0000b3"

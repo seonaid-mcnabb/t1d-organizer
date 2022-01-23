@@ -43,43 +43,44 @@ function AddNewContactForm({ navigation }) {
     <ScrollView>
       <TextInput
         mode="outlined"
-        activeOutlineColor="#3333ff"
+        activeOutlineColor="#0000b3"
         label="First Name"
         onChangeText={(text) => setFirstname(text)}
       ></TextInput>
       <TextInput
         mode="outlined"
-        activeOutlineColor="#3333ff"
+        activeOutlineColor="#0000b3"
         label="Last Name"
         onChangeText={(text) => setLastname(text)}
       ></TextInput>
       <TextInput
         mode="outlined"
-        activeOutlineColor="#3333ff"
+        activeOutlineColor="#0000b3"
         label="Specialty"
         onChangeText={(text) => setSpecialty(text)}
       ></TextInput>
       <TextInput
+        keyboardType="numeric"
         mode="outlined"
-        activeOutlineColor="#3333ff"
+        activeOutlineColor="#0000b3"
         label="Phone Number"
         onChangeText={(text) => setPhonenumber(text)}
       ></TextInput>
       <TextInput
         mode="outlined"
-        activeOutlineColor="#3333ff"
+        activeOutlineColor="#0000b3"
         label="Email"
         onChangeText={(text) => setEmail(text)}
       ></TextInput>
       <TextInput
         mode="outlined"
-        activeOutlineColor="#3333ff"
+        activeOutlineColor="#0000b3"
         label="Office Location"
         onChangeText={(text) => setOffice(text)}
       ></TextInput>
       <TextInput
         mode="outlined"
-        activeOutlineColor="#3333ff"
+        activeOutlineColor="#0000b3"
         label="Notes"
         onChangeText={(text) => setNotes(text)}
       ></TextInput>

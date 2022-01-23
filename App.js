@@ -38,7 +38,7 @@ function WelcomeScreen({ navigation }) {
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Button
         style={styles.button}
-        icon="contacts"
+        icon="account-circle-outline"
         mode="contained"
         color="#0000b3"
         onPress={() => navigation.navigate("Contacts")}
@@ -48,7 +48,7 @@ function WelcomeScreen({ navigation }) {
 
       <Button
         style={styles.button}
-        icon="calendar"
+        icon="calendar-month-outline"
         mode="contained"
         color="#0000b3"
         onPress={() => navigation.navigate("Calendar")}
@@ -57,7 +57,7 @@ function WelcomeScreen({ navigation }) {
       </Button>
 
       <Button
-        icon="calculator"
+        icon="calculator-variant"
         style={styles.button}
         mode="contained"
         color="#0000b3"

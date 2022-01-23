@@ -45,7 +45,7 @@ function AddToCalendarForm({ navigation }) {
     <View>
       <TextInput
         mode="outlined"
-        activeOutlineColor="#3333ff"
+        activeOutlineColor="#0000b3"
         label="Appointment Type"
         onChangeText={(text) => setType(text)}
       />
@@ -60,14 +60,15 @@ function AddToCalendarForm({ navigation }) {
       />
 
       <TextInput
+        keyboardType="numeric"
         mode="outlined"
-        activeOutlineColor="#3333ff"
+        activeOutlineColor="#0000b3"
         label="Time"
         onChangeText={(text) => setTime(text)}
       />
       <TextInput
         mode="outlined"
-        activeOutlineColor="#3333ff"
+        activeOutlineColor="#0000b3"
         label="Location"
         onChangeText={(text) => setLocation(text)}
       />
@@ -75,7 +76,7 @@ function AddToCalendarForm({ navigation }) {
       <Checkbox.Item
         label="Labwork"
         position="leading"
-        color="#e6005c"
+        color="#0000b3"
         status={labwork ? "checked" : "unchecked"}
         onPress={() => {
           setLabwork(!labwork);
@@ -84,7 +85,7 @@ function AddToCalendarForm({ navigation }) {
 
       <TextInput
         mode="outlined"
-        activeOutlineColor="#3333ff"
+        activeOutlineColor="#0000b3"
         label="Additional Notes"
         onChangeText={(text) => setNotes(text)}
       />

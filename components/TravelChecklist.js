@@ -1,6 +1,7 @@
 import React from "react";
 import { ScrollView, Button, Text } from "react-native";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
+import { List } from "react-native-paper";
 
 //TRAVEL CHECKLIST FUNCTIONALIT//
 /*--Accepts route as parameter

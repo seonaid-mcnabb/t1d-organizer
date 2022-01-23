@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, FlatList, StyleSheet } from "react-native";
-import { Button } from "react-native-paper";
+import { View, Text, FlatList, StyleSheet, SectionList } from "react-native";
+import { Button, List } from "react-native-paper";
 
 //THE CONTACT DETAILS VIEW//
 /*
@@ -29,6 +29,27 @@ function ContactDetails({ route, navigation }) {
     space: {
       width: 20, // or whatever size you need
       height: 20,
+    },
+  });
+
+  const listStyle = StyleSheet.create({
+    container: {
+      flex: 1,
+      paddingTop: 22,
+    },
+    sectionHeader: {
+      paddingTop: 2,
+      paddingLeft: 10,
+      paddingRight: 10,
+      paddingBottom: 2,
+      fontSize: 14,
+      fontWeight: "bold",
+      backgroundColor: "rgba(247,247,247,1.0)",
+    },
+    item: {
+      padding: 10,
+      fontSize: 18,
+      height: 44,
     },
   });
 
@@ -83,6 +104,7 @@ function ContactDetails({ route, navigation }) {
           </Text>
         )}
       />
+
       <Button
         style={styles.button}
         icon="account-edit-outline"
