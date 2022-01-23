@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { View, StyleSheet } from "react-native";
 import DateField from "react-native-datefield";
 import { TextInput, Text, Checkbox, Button } from "react-native-paper";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
+import { Context1 } from "../App";
 
 //ADD TO CALENDAR FUNCTIONALITY//
 /*
@@ -19,6 +20,8 @@ function AddToCalendarForm({ navigation }) {
   const [location, setLocation] = useState("");
   const [labwork, setLabwork] = useState(false);
   const [notes, setNotes] = useState("");
+
+  const context = useContext(Context1);
 
   const styles = StyleSheet.create({
     headings: {
@@ -81,7 +84,10 @@ function AddToCalendarForm({ navigation }) {
       }),
     })
       .then((res) => res.json())
-      .then((json) => navigation.navigate("Calendar"))
+      .then((json) => {
+        context.setAppointments(json);
+        navigation.navigate("Calendar");
+      })
       .catch((error) => {
         console.log(error);
       });

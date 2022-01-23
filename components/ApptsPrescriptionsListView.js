@@ -9,9 +9,12 @@ import {
 } from "react-native";
 
 import { Title } from "react-native-paper";
+import { Context1 } from "../App";
 
 function ApptsPrescriptionsListView({ route }) {
   const { appointments, materials } = route.params;
+
+  const context = useContext(Context1);
 
   const styles = StyleSheet.create({
     title: {
@@ -55,11 +58,11 @@ function ApptsPrescriptionsListView({ route }) {
   });
 
   //this sorts the appointments array in ascending order
-  let upcomingAppointments = appointments.sort(function (a, b) {
+  let upcomingAppointments = context.appointments.sort(function (a, b) {
     return a.date.localeCompare(b.date);
   });
 
-  let prescriptionHistory = materials.sort(function (a, b) {
+  let prescriptionHistory = context.materials.sort(function (a, b) {
     return a.datereceived.localeCompare(b.datereceived);
   });
 
@@ -82,6 +85,8 @@ function ApptsPrescriptionsListView({ route }) {
               <Text style={styles.text}> {item.labwork} </Text>
               {"\n"} <Title style={styles.title}>additional notes:</Title>
               <Text style={styles.text}> {item.notes}</Text>
+              {"\n"}
+              {"\n"}
             </Text>
           </View>
         )}

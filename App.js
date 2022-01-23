@@ -84,7 +84,10 @@ export const Context1 = React.createContext(null);
 //In the return function, it contains the stack navigator
 function App() {
   const [contacts, setContacts] = useState([]);
+  const [appointments, setAppointments] = useState([]);
+  const [materials, setMaterials] = useState([]);
 
+  //This grabs all the contacts and can be used through the app if context provided
   useEffect(() => {
     fetch("http://localhost:5000/contacts")
       .then((res) => {
@@ -104,6 +107,46 @@ function App() {
       });
   }, []);
 
+  //This grabs all the appointments and can be used througout the app if context provided
+  useEffect(() => {
+    fetch("http://localhost:5000/appointments")
+      .then((res) => {
+        if (res.ok) {
+          console.log(res);
+          return res.json();
+        } else {
+          throw new Error("Not 2xx response");
+        }
+      })
+      .then((json) => {
+        setAppointments(json);
+        console.log(json);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  //Grabs all materials from backend and sets state
+  useEffect(() => {
+    fetch("http://localhost:5000/materials")
+      .then((res) => {
+        if (res.ok) {
+          console.log(res);
+          return res.json();
+        } else {
+          throw new Error("Not 2xx response");
+        }
+      })
+      .then((json) => {
+        setMaterials(json);
+        console.log(json);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   //Stack Navigator Below//
   /*
   --Contained in a Navigation Container
@@ -116,7 +159,16 @@ function App() {
   return (
     <PaperProvider>
       <NavigationContainer>
-        <Context1.Provider value={{ contacts, setContacts }}>
+        <Context1.Provider
+          value={{
+            contacts,
+            setContacts,
+            appointments,
+            setAppointments,
+            materials,
+            setMaterials,
+          }}
+        >
           <Stack.Navigator>
             <Stack.Screen name="Home" component={WelcomeScreen} />
             <Stack.Screen name="Contacts" component={ContactList} />

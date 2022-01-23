@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Text, View, StyleSheet } from "react-native";
 import DateField from "react-native-datefield";
 import { TextInput, Button } from "react-native-paper";
+import { Context1 } from "../App";
 
 //ADD NEW PRESCRIPTION FUNCTIONALITY//
 /*
@@ -17,6 +18,8 @@ function AddNewPrescriptionForm({ navigation }) {
   const [duration, setDuration] = useState("");
   const [ordermethod, setOrdermethod] = useState("");
   const [notes, setNotes] = useState("");
+
+  const context = useContext(Context1);
 
   const styles = StyleSheet.create({
     headings: {
@@ -79,7 +82,10 @@ function AddNewPrescriptionForm({ navigation }) {
       }),
     })
       .then((res) => res.json())
-      .then((json) => navigation.navigate("Calendar"))
+      .then((json) => {
+        context.setMaterials(json);
+        navigation.navigate("Calendar");
+      })
       .catch((error) => {
         console.log(error);
       });
