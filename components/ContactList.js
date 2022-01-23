@@ -45,7 +45,7 @@ function ContactList({ navigation }) {
   return (
     <View style={{ alignItems: "left" }}>
       <FlatList
-        data={context}
+        data={context.contacts}
         renderItem={({ item }) => (
           <Text style={styles.name}>
             {" "}

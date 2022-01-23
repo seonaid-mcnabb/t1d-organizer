@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import {
   View,
   Text,
@@ -8,6 +8,7 @@ import {
   InteractionManager,
 } from "react-native";
 import { Button, List, Title } from "react-native-paper";
+import { Context1 } from "../App";
 
 //THE CONTACT DETAILS VIEW//
 /*
@@ -27,6 +28,8 @@ import { Button, List, Title } from "react-native-paper";
 function ContactDetails({ route, navigation }) {
   const id = route.params.id;
   const [contact, setContact] = useState([]);
+
+  const context = useContext(Context1);
 
   const styles = StyleSheet.create({
     title: {
@@ -91,6 +94,7 @@ function ContactDetails({ route, navigation }) {
       })
       .then((json) => {
         console.log(json);
+        context.setContacts(json);
         navigation.navigate("Contacts");
       })
       .catch((error) => {
