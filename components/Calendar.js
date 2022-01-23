@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { View, StyleSheet } from "react-native";
 import { Button } from "react-native-paper";
 import { Calendar, Agenda } from "react-native-calendars";
+import { Context1 } from "../App";
 
 //CALENDAR VIEW//
 /* 
@@ -29,53 +30,14 @@ function CalendarView({ navigation }) {
     },
   });
 
-  const [appointments, setAppointments] = useState([]);
-  const [materials, setMaterials] = useState([]);
-  //Grabs all apppointments from backend and sets calendar state
-  useEffect(() => {
-    fetch("http://localhost:5000/appointments")
-      .then((res) => {
-        if (res.ok) {
-          console.log(res);
-          return res.json();
-        } else {
-          throw new Error("Not 2xx response");
-        }
-      })
-      .then((json) => {
-        setAppointments(json);
-        console.log(json);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
-  //Grabs all materials from backend and sets state
-  useEffect(() => {
-    fetch("http://localhost:5000/materials")
-      .then((res) => {
-        if (res.ok) {
-          console.log(res);
-          return res.json();
-        } else {
-          throw new Error("Not 2xx response");
-        }
-      })
-      .then((json) => {
-        setMaterials(json);
-        console.log(json);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+  //gives access to appointments and materials
+  const context = useContext(Context1);
 
   return (
     <View>
       <Calendar
-        appointments={appointments}
-        materials={materials}
+        appointments={context.appointments}
+        materials={context.materials}
         enableSwipeMonths={true}
         onDayPress={(day) => {
           console.log("selected day", day);
@@ -144,12 +106,7 @@ function CalendarView({ navigation }) {
         icon="format-list-checkbox"
         mode="contained"
         color="#0000b3"
-        onPress={() =>
-          navigation.navigate("App and Prescriptions List View", {
-            appointments: appointments,
-            materials: materials,
-          })
-        }
+        onPress={() => navigation.navigate("App and Prescriptions List View")}
       >
         View Upcoming Appointments and Prescription Renewals
       </Button>

@@ -1,19 +1,10 @@
-import React, { useContext, useEffect, useState, useCallback } from "react";
-import {
-  View,
-  ScrollView,
-  FlatList,
-  Text,
-  Button,
-  StyleSheet,
-} from "react-native";
+import React, { useContext } from "react";
+import { View, ScrollView, FlatList, Text, StyleSheet } from "react-native";
 
 import { Title } from "react-native-paper";
 import { Context1 } from "../App";
 
-function ApptsPrescriptionsListView({ route }) {
-  const { appointments, materials } = route.params;
-
+function ApptsPrescriptionsListView() {
   const context = useContext(Context1);
 
   const styles = StyleSheet.create({
