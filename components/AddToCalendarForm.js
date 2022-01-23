@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { View } from "react-native";
+import { View, StyleSheet } from "react-native";
 import DateField from "react-native-datefield";
 import { TextInput, Text, Checkbox, Button } from "react-native-paper";
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 //ADD TO CALENDAR FUNCTIONALITY//
 /*
@@ -18,6 +19,51 @@ function AddToCalendarForm({ navigation }) {
   const [location, setLocation] = useState("");
   const [labwork, setLabwork] = useState(false);
   const [notes, setNotes] = useState("");
+
+  const styles = StyleSheet.create({
+    headings: {
+      fontSize: 18,
+      lineHeight: 18,
+      fontFamily: "sans-serif",
+      fontWeight: "normal",
+      color: "#00004d",
+      marginBottom: 8,
+      marginLeft: 5,
+      marginTop: 5,
+    },
+    text: {
+      fontSize: 15,
+      lineHeight: 15,
+      fontFamily: "sans-serif",
+      fontWeight: "normal",
+      color: "black",
+      marginBottom: 5,
+      textDecorationLine: "none",
+    },
+    headings: {
+      fontSize: 18,
+      lineHeight: 18,
+      fontFamily: "sans-serif",
+      fontWeight: "normal",
+      color: "#00004d",
+      marginBottom: 8,
+      marginLeft: 5,
+      marginTop: 5,
+    },
+    checkbox: {
+      borderColor: "grey",
+      borderWidth: 1.5,
+      borderRadius: 3,
+      marginTop: 5,
+      marginBottom: 5,
+      marginLeft: 20,
+    },
+    button: {
+      marginBottom: 5,
+      marginTop: 10,
+      padding: 10,
+    },
+  });
 
   const addNewAppointment = () => {
     fetch("http://localhost:5000/appointment", {
@@ -43,20 +89,34 @@ function AddToCalendarForm({ navigation }) {
 
   return (
     <View>
+      <Text style={styles.headings}>Appointment Date:</Text>
+      <DateField
+        labelDate="Input day"
+        labelMonth="Input month"
+        labelYear="Input year"
+        styleInput={styles.text}
+        onSubmit={(value) => setDate(value)}
+      />
+
+      <Text style={styles.headings}>Check if labwork necessary:</Text>
+      <BouncyCheckbox
+        size={17}
+        fillColor="#e6005c"
+        unfillColor="#FFFFFF"
+        text="Labwork"
+        iconStyle={styles.checkbox}
+        textStyle={styles.text}
+        onPress={() =>
+          labwork === false ? setLabwork(true) : setLabwork(false)
+        }
+      />
+
+      <Text style={styles.headings}>Additional Information:</Text>
       <TextInput
         mode="outlined"
         activeOutlineColor="#0000b3"
         label="Appointment Type"
         onChangeText={(text) => setType(text)}
-      />
-
-      <Text>Date:</Text>
-      <DateField
-        labelDate="Input day"
-        labelMonth="Input month"
-        labelYear="Input year"
-        //styleInput={styles.inputBorder}
-        onSubmit={(value) => setDate(value)}
       />
 
       <TextInput
@@ -73,16 +133,6 @@ function AddToCalendarForm({ navigation }) {
         onChangeText={(text) => setLocation(text)}
       />
 
-      <Checkbox.Item
-        label="Labwork"
-        position="leading"
-        color="#0000b3"
-        status={labwork ? "checked" : "unchecked"}
-        onPress={() => {
-          setLabwork(!labwork);
-        }}
-      />
-
       <TextInput
         mode="outlined"
         activeOutlineColor="#0000b3"
@@ -91,6 +141,7 @@ function AddToCalendarForm({ navigation }) {
       />
 
       <Button
+        style={styles.button}
         icon="check"
         mode="contained"
         color="#0000b3"

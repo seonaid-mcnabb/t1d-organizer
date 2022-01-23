@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ScrollView, Text, View } from "react-native";
 import { TextInput } from "react-native-paper";
-import { Button } from "react-native-paper";
+import { Button, Title } from "react-native-paper";
 
 //THE ADD NEW CONTACT FORM SHOULD:
 //Accept and record details of a new contact
