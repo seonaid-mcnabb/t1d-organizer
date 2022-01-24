@@ -20,12 +20,12 @@ create database t1d;
 
 ## STEP 3: START THE BACK-END
 
-BE:
-
 - cd server
 - npm install
 - npm run migrate
 - npm start
+
+NOTE: You will only have to run install & migrate the first time. When working on it after that, just cd server and npm start to initialize the back-end
 
 ## NOTES
 
