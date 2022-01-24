@@ -27,8 +27,8 @@ function ApptsPrescriptionsListView() {
     },
     text: {
       fontSize: 20,
-      lineheight: 20,
-      color: "000000",
+      lineHeight: 20,
+      color: "#000000",
     },
     header: {
       fontSize: 20,
@@ -42,7 +42,7 @@ function ApptsPrescriptionsListView() {
     sectiontitle: {
       fontSize: 30,
       lineHeight: 30,
-      fontFamily: "Courier New",
+      fontFamily: "sans-serif-light",
       fontWeight: "normal",
       paddingBottom: 20,
       paddingTop: 20,
@@ -100,12 +100,12 @@ function ApptsPrescriptionsListView() {
   });
 
   return (
-    <ScrollView>
+    <View>
       <Text style={styles.sectiontitle}>UPCOMING APPOINTMENTS</Text>
       <FlatList
         data={upcomingAppointments}
         renderItem={({ item }) => (
-          <View>
+          <ScrollView>
             <Text>
               <Text style={styles.header}>{item.date.substring(0, 10)}</Text>
               {"\n"} <Title style={styles.title}>type:</Title>{" "}
@@ -133,7 +133,7 @@ function ApptsPrescriptionsListView() {
             >
               Delete
             </Button>
-          </View>
+          </ScrollView>
         )}
       />
 
@@ -142,7 +142,7 @@ function ApptsPrescriptionsListView() {
       <FlatList
         data={prescriptionHistory}
         renderItem={({ item }) => (
-          <View>
+          <ScrollView>
             <Text>
               <Text style={styles.header}>
                 Date Received: {item.datereceived.substring(0, 10)}
@@ -156,10 +156,10 @@ function ApptsPrescriptionsListView() {
               {"\n"}
               {"\n"}
             </Text>
-          </View>
+          </ScrollView>
         )}
       />
-    </ScrollView>
+    </View>
   );
 }
 
