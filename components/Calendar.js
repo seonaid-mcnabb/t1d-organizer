@@ -95,7 +95,6 @@ function CalendarView({ navigation }) {
       >
         Add An Appointment
       </Button>
-
       <Button
         style={styles.button}
         icon="pill"
@@ -105,7 +104,6 @@ function CalendarView({ navigation }) {
       >
         Add New Prescription
       </Button>
-
       <Button
         style={styles.button}
         icon="format-list-checkbox"
@@ -113,7 +111,7 @@ function CalendarView({ navigation }) {
         color="#0000b3"
         onPress={() => navigation.navigate("App and Prescriptions List View")}
       >
-        View Upcoming Appointments and Prescription Renewals
+        View Upcoming
       </Button>
     </View>
   );

@@ -1,8 +1,6 @@
 import React, { useContext, useState } from "react";
 import { View, ScrollView, FlatList, Text, StyleSheet } from "react-native";
-
 import { Title, Button } from "react-native-paper";
-//import { event } from "react-native-reanimated";
 import { Context1 } from "../App";
 
 /*THE PRESCRIPTION AND APPT VIEW LIST */
@@ -16,7 +14,6 @@ import { Context1 } from "../App";
 
 function ApptsPrescriptionsListView() {
   const context = useContext(Context1);
-  const [appointmentID, setAppointmentID] = useState("");
 
   const styles = StyleSheet.create({
     title: {
@@ -58,12 +55,6 @@ function ApptsPrescriptionsListView() {
       height: 20,
     },
   });
-
-  const handleAppointmentId = (event) => {
-    const id = event.target.value;
-    setAppointmentID(id);
-    console.log(appointmentID);
-  };
 
   /* const handleDeleteAppointment = (id) => {
     console.log(id);
@@ -128,10 +119,9 @@ function ApptsPrescriptionsListView() {
               icon="delete-empty-outline"
               mode="contained"
               color="#0000b3"
-              value={item.id}
-              onPress={handleAppointmentId}
+              onPress={console.log("you pressed me")}
             >
-              Delete
+              See details
             </Button>
           </ScrollView>
         )}
@@ -156,6 +146,10 @@ function ApptsPrescriptionsListView() {
               {"\n"}
               {"\n"}
             </Text>
+            <Button onPress={console.log("you pressed me too")}>
+              {" "}
+              press here
+            </Button>
           </ScrollView>
         )}
       />
