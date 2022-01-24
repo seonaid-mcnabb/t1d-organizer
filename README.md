@@ -21,10 +21,11 @@ create database t1d;
 ## STEP 3: START THE BACK-END
 
 BE:
-cd server
-npm install
-npm run migrate
-npm start
+
+- cd server
+- npm install
+- npm run migrate
+- npm start
 
 ## NOTES
 
