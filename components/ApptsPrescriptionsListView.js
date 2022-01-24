@@ -1,7 +1,8 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { View, ScrollView, FlatList, Text, StyleSheet } from "react-native";
 
-import { Title } from "react-native-paper";
+import { Title, Button } from "react-native-paper";
+//import { event } from "react-native-reanimated";
 import { Context1 } from "../App";
 
 /*THE PRESCRIPTION AND APPT VIEW LIST */
@@ -15,6 +16,7 @@ import { Context1 } from "../App";
 
 function ApptsPrescriptionsListView() {
   const context = useContext(Context1);
+  const [appointmentID, setAppointmentID] = useState("");
 
   const styles = StyleSheet.create({
     title: {
@@ -57,6 +59,36 @@ function ApptsPrescriptionsListView() {
     },
   });
 
+  const handleAppointmentId = (event) => {
+    const id = event.target.value;
+    setAppointmentID(id);
+    console.log(appointmentID);
+  };
+
+  /* const handleDeleteAppointment = (id) => {
+    console.log(id);
+    fetch(`http://localhost:5000/appointments/${id}`, {
+      method: "delete",
+    })
+      .then((res) => {
+        console.log(res);
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw new Error("Not 2xx response");
+        }
+      })
+      .then((json) => {
+        console.log(json);
+        context.setAppointments(json);
+        navigation.navigate("App and Prescriptions List View");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  */
+
   //this sorts the appointments array in ascending order by date
   let upcomingAppointments = context.appointments.sort(function (a, b) {
     return a.date.localeCompare(b.date);
@@ -88,7 +120,19 @@ function ApptsPrescriptionsListView() {
               <Text style={styles.text}> {item.notes}</Text>
               {"\n"}
               {"\n"}
+              <Text> {item.id} </Text>
             </Text>
+
+            <Button
+              style={styles.button}
+              icon="delete-empty-outline"
+              mode="contained"
+              color="#0000b3"
+              value={item.id}
+              onPress={handleAppointmentId}
+            >
+              Delete
+            </Button>
           </View>
         )}
       />

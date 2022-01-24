@@ -1,9 +1,9 @@
 import React from "react";
 import { ScrollView, Text, StyleSheet } from "react-native";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
-import { List, Button } from "react-native-paper";
+import { Button } from "react-native-paper";
 
-//TRAVEL CHECKLIST FUNCTIONALIT//
+//TRAVEL CHECKLIST FUNCTIONALITY//
 /*--Accepts route as parameter
 --Through route, accepts all of the states sent by CalculatorInput.js
 --Generates checkboxes
