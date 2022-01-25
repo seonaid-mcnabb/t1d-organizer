@@ -8,15 +8,19 @@ import { Context1 } from "../App";
 /* 
 --Uses react-native-calendars library to display calendar view
 --I am currently still trying to figure out how to make this work 
---I want: added appointments or prescriptions to displayed visually
---Push notifications to be set up when an appointment or prescription renewal is set up
---The <Calendar> element currently in the turn portion is mostly just copy/past from react-native-calendars
+--I want: added appointments or prescriptions to display visually
+--Push notifications to be set up when an appointment or prescription renewal is coming up
+--The <Calendar> element currently in the return portion is mostly just copy/past from react-native-calendars
 --but it's non-functional because I didn't have time to figure it out
 
 //BUTTONS//
---Accepts navigation as parameter so it can:
+--Accept navigation as parameter so it can:
 --Navigate to AddToCalendarForm.js
 --Navigate to AddNewPrescriptionForm.js
+--Navigate to ApptsPrescriptionsViewList.js --> IMPORTANT, this button has a bug.
+--APPTS VIEW LIST BUG: onPress, this button navigates to the list view but it also performs the 
+onPress function of the buttons in the two Flatlists on the list view component (presses all the buttons
+in this view and console.logs what's written in the onPress function in the ListView component)
 */
 
 function CalendarView({ navigation }) {
@@ -104,6 +108,7 @@ function CalendarView({ navigation }) {
       >
         Add New Prescription
       </Button>
+
       <Button
         style={styles.button}
         icon="format-list-checkbox"

@@ -85,8 +85,8 @@ function AddToCalendarForm({ navigation }) {
     })
       .then((res) => res.json())
       .then((json) => {
-        context.setAppointments(json);
-        navigation.navigate("Calendar");
+        context.setAppointments(json); //updates app context
+        navigation.navigate("Calendar"); //navigates back to Calendar view
       })
       .catch((error) => {
         console.log(error);

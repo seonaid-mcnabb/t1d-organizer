@@ -162,6 +162,7 @@ function App() {
   --Each of the screens to be contained in this navigator is named, and linked to its component
   --You can navigate between screens anywhere in the app by declaring {navigation} as parameter in component
   --Then addiding onPress function with navigation.navigation("SCREEN-NAME-OF-YOUR-CHOICE")
+  --^^Be sure to import screens that you want to use in the Stack Navigator to app.js
   */
   return (
     <PaperProvider>

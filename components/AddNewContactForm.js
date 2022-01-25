@@ -6,7 +6,7 @@ import { Context1 } from "../App";
 
 //THE ADD NEW CONTACT FORM SHOULD:
 //Accepts and record details of a new contact
-//Add the contact and details to the contacts database upon submit
+//Adds the contact and details to the contacts database upon submit
 //Updates the contacts state through context so that data is displayed immediately
 
 function AddNewContactForm({ navigation }) {

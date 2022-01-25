@@ -8,8 +8,9 @@ import { Context1 } from "../App";
 --I like a list view of the appointments but it's currently not very interactive / useful 
 --There are two FlatLists here
 --One goes through appointments (provided by context)
---The other one goes through materials(provided by context)
+--The other one goes through materials(also provided by context)
 --Both show the date above and some details about the appointment or prescription/materials
+--The component has a bug (explained on Calendar.js)
 */
 
 function ApptsPrescriptionsListView() {
@@ -146,7 +147,12 @@ function ApptsPrescriptionsListView() {
               {"\n"}
               {"\n"}
             </Text>
-            <Button onPress={console.log("you pressed me too")}>
+            <Button
+              style={styles.button}
+              mode="contained"
+              color="#0000b3"
+              onPress={console.log("you pressed me too")}
+            >
               {" "}
               press here
             </Button>

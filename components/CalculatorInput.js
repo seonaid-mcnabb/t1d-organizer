@@ -9,7 +9,8 @@ import { TextInput, Text, Checkbox, Button } from "react-native-paper";
 --Contains logic within checkboxes to change from true / false onPress
 --Has a "generate checklist button"
 --The generate checklist button navigates to TravelChecklist.js
---^^On navigate, the state paramaters are sent along to the checklist view
+--^^On navigate, the state paramaters are sent along to the checklist view so that they can be used in
+the checklist logic
  */
 
 function CalculatorInput({ navigation }) {
