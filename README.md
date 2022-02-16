@@ -33,4 +33,4 @@ NOTE: You will only have to run install & migrate the first time. When working o
 
 --npm start in the root will generate a link to view the project in development mode, usually something like (localhost:19000). Follow through to the link and click on the "run in web browser" option in "Metro Bundler" menu on the left in order to see the project in your web browser
 
---In the metro bundler on the left, you'll also see a QR code. If you download the "Expo Go" app to your phone and are running the app and your phone on the same wifi, you can scan this code to see the app on your phone (unfortunately phone-testing does not communicate with the back-end at the moment but you can use it to see how features are displayed)
+--In the metro bundler on the left, you'll also see a QR code. If you download the "Expo Go" app to your phone and are running the app and your phone on the same wifi, you can scan this code to see the app on your phone.
