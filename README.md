@@ -1,6 +1,6 @@
 # ABOUT THE PROJECT
 
-I created this medical organizer in an effort to alleve some of the pressure of living with a chronic illness like Type 1 Diabetes by creating a place to store all medical-related information, as well as to keep track of prescriptions and appointments. The app also has a calculator specifically designed for Type 1 Diabetics using an insulin pump, sensor, and glucometer, in order to generate a medical supply packing list for travel. I am currently still working on implementing prescription and appointment tracking features, but always open to suggestions!
+I created this medical organizer in an effort to relieve some of the pressure of living with a chronic illness like Type 1 Diabetes and make self-management and organization easier by creating a place to store all medical-related information, as well as to keep track of prescriptions and appointments. The app also has a calculator specifically designed for Type 1 Diabetics using an insulin pump, sensor, and glucometer, in order to generate a medical supply packing list for travel. I am currently still working on implementing prescription and appointment tracking features, but always open to suggestions!
 
 # GET STARTED
 
